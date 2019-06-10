@@ -12,6 +12,12 @@ LINK = "url_download"
 DB_FILENAME = "../db/jws_list.db"
 
 class SQLighter:
+    def __enter__(self):
+        """Open by content manager"""
+        return self
+    def __exit__(self, exception_type, exception_value, traceback):
+        """Close by content manager"""
+        self.close()
     def __init__(self):
         self.conn = sqlite3.connect(DB_FILENAME)
         self.c = self.conn.cursor()
@@ -35,7 +41,7 @@ class SQLighter:
                 )
             )
     def close(self):
-        """Close the connection with DB"""
+        """Close the DB connection"""
         self.conn.close()
     def select_all_rows(self):
         """Select all rows from the table"""
@@ -78,6 +84,25 @@ class SQLighter:
                     link=LINK,
                 ),
                 (event_id, description, date, url_download),
+            )
+    def insert_row_from_obj(self, session_object):
+        """Add a row from the JWSession object"""
+        with self.conn:
+            self.c.execute(
+                """INSERT INTO {table}({event}, {desc}, {date}, {link})
+                VALUES (?, ?, ?, ?)""".format(
+                    table=TABLE,
+                    event=EVENT,
+                    desc=DESC,
+                    date=DATE,
+                    link=LINK,
+                ),
+                (
+                    session_object.event_id,
+                    session_object.event_desc,
+                    session_object.event_date,
+                    session_object.event_durl,
+                ),
             )
     def search_event(self, event_id):
         row = self.select_row_event(event_id)

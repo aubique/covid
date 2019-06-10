@@ -3,134 +3,218 @@
 # JWS Downloader: main script
 
 import requests
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from os import environ
 from os.path import expanduser
-from json import loads as deserialize
+import json
 from base64 import b64decode
 from clint.textui import progress
 from jws_db import SQLighter
 import config
 
+LANGUAGE = config.RU
+HOME_DIRECTORY = "/Videos/JWS/"
+
 def decode_var(encoded_variable):
     """Decode a base64 encoded string"""
-    bstring = encoded_variable.encode('utf-8', 'ignore')
+    bstring = encoded_variable.encode("utf-8", "ignore")
     dec64data = b64decode(bstring)
-    return dec64data.decode('utf-8', 'ignore')
+    return dec64data.decode("utf-8", "ignore")
 
 def check_environment():
     """Check whether you typed well the password"""
-    print('LOGIN:\t\t%s' % decode_var(environ[config.ENV_USER]))
-    print('PASSWD:\t\t%s' % decode_var(environ[config.ENV_PASS]))
+    print("LOGIN:\t\t%s" % decode_var(environ[config.ENV_USER]))
+    print("PASSWD:\t\t%s" % decode_var(environ[config.ENV_PASS]))
 
-def selenium_setup():
-    """Setup options and return webdriver"""
-    options = Options()
-    options.add_argument('no-sandbox')
-    return webdriver.Chrome(chrome_options=options)
+def get_events(session):
+    """Get a app/json data with the list of events"""
 
-def selenium_login(driver, url, password):
-    """Authorize with Chromium and return cookies"""
-    driver.get(url)
-    password_input = driver.find_element_by_id('passwordInput')
-    password_input.send_keys(password)
-    submit_button = driver.find_element_by_id('submitButton')
-    submit_button.click()
-    xsrf_val = get_cookie(driver, config.XSRF_NAME)
-    session_val = get_cookie(driver, config.SESSION_NAME)
-    return xsrf_val, session_val
-
-def get_cookie(driver, search_pattern):
-    """Get a value from the given cookie"""
-    return next(
-        (
-            cookie
-            for cookie in driver.get_cookies()
-            if cookie['name'] == (search_pattern)
-        )
-    )['value']
-
-def set_session(xsrf_value, session_value):
-    """Return a session with pre-installed cookies"""
-    xsrf_cookie = requests.cookies.create_cookie(
-        name=config.XSRF_NAME, value=xsrf_value
+    # STEP 1
+    parsed = session.make_request(
+        "GET", session.url_init + session.uid, config.BS4_NEXT_FORM
     )
-    session_cookie = requests.cookies.create_cookie(
-        name=config.SESSION_NAME, value=session_value
+    # STEP 2
+    parsed = session.make_request(
+        "POST",
+        session.url_domain + parsed,
+        config.BS4_LOGIN_FORM,
+        JWSession.compile_dict(config.DATA_NEXT, session.mail),
     )
-    s = requests.Session()
-    s.cookies.set_cookie(xsrf_cookie)
-    s.cookies.set_cookie(session_cookie)
-    return s
+    # STEP 3
+    parsed = session.make_request(
+        "POST",
+        session.url_domain + parsed,
+        config.BS4_SAML_RESPONSE,
+        JWSession.compile_dict(
+            config.DATA_LOGIN, session.mail, session.passwd
+        ),
+    )
+    # STEP 4
+    parsed = session.make_request(
+        "POST",
+        session.relay_state,
+        None,
+        JWSession.compile_dict(
+            config.DATA_RELAY_STATE, session.relay_state, parsed
+        ),
+    ).text
+    # STEP 5
+    parsed = session.make_request(
+        "POST",
+        session.url_videos,
+        None,
+        json.dumps(LANGUAGE),
+        JWSession.compile_dict(
+            config.HEADERS_XREQUEST, session.get_cookie("XSRF-TOKEN")
+        ),
+    ).text
+    return parsed
 
-def request_events(xsrf_value, session_value):
-    """Return application/json data with the list of events"""
-    url = decode_var(config.URL_VIDEOS_ENC)
-    s = set_session(xsrf_value, session_value)
-    headers = {'X-XSRF-TOKEN': s.cookies.get(config.XSRF_NAME)}
-    headers.update(config.HEADERS_LANGUAGE)
-    page_events = s.post(url, data=config.PAYLOAD_EN, headers=headers)
-    return page_events.content
+def get_link(session):
+    """Return a link to download the video"""
 
-def request_link(url_event, xsrf_value, session_value):
-    """Get a link from the redirected event"""
-    s = set_session(xsrf_value, session_value)
-    pd = s.get(url_event, headers=config.HEADERS_DOWNLOAD)
-    #print(s.cookies)
-    return pd.url
+    # STEP 6
+    parsed = session.make_request(
+        "GET",
+        session.event_turl,
+        None,
+        None,
+        JWSession.compile_dict(
+            config.HEADERS_HOST, session.stream_host
+        ),
+    ).url
+    return parsed
 
-def create_dict(event_list):
-    """Return a dictionary with the event info"""
-    event_dict = {
-        'event_id': event_list[1]['data']['id_event'],
-        'description': event_list[1]['description'],
-        'date': event_list[1]['date'],
-        'url_event': event_list[1]['vod_firstfile_url']
-    }
-    return event_dict
-
-def download_file(url, filename):
-    fpath = expanduser('~') + '/Downloads/' + filename + '.mp4'
+def download_file(url, filename_path):
+    """Download a file by using requests and clink"""
     r = requests.get(url, stream=True)
-    with open(fpath, 'wb') as f:
-        total_length = int(r.headers.get('content-length'))
-        for chunk in progress.bar(r.iter_content(chunk_size=config.SIZE),
-                                  expected_size=(total_length/config.SIZE) + 1):
+    # TODO introduce a filepath validation
+    with open(filename_path, "wb") as f:
+        total_length = int(r.headers.get("content-length"))
+        for chunk in progress.bar(
+            r.iter_content(chunk_size=config.SIZE),
+            expected_size=(total_length / config.SIZE) + 1,
+        ):
             if chunk:
                 f.write(chunk)
                 f.flush
-    return fpath
+    return filename_path
+
+class Singleton(object):
+    __instance = None
+    def __new__(cls, *args, **kwargs):
+        if not cls.__instance:
+            cls.__instance = super(Singleton, cls).__new__(cls)
+        return cls.__instance
+
+class JWSession(Singleton):
+    def __enter__(self):
+        """Open by content manager"""
+        return self
+    def __exit__(self, exception_type, exception_value, traceback):
+        """Close by content manager"""
+        self.close()
+    def __init__(self, session):
+        self.__session = session
+        self.uid = decode_var(environ[config.ENV_USER])
+        self.mail = self.uid + decode_var(config.MAIL_DOMAIN_ENC)
+        self.passwd = decode_var(environ[config.ENV_PASS])
+        self.url_init = decode_var(config.URL_ADSF_ENC)
+        self.url_domain = decode_var(config.URL_DOMAIN_ENC)
+        self.relay_state = decode_var(config.URL_RELAY_STATE_ENC)
+        self.url_videos = decode_var(config.URL_VIDEOS_ENC)
+        self.stream_host = decode_var(config.STREAM_HOST_ENC)
+    def close(self, *args, **kwargs):
+        """Delete the JWS instance"""
+        self.__session.close(*args, **kwargs)
+        del self
+    def set_req(self, find_params=None, payload=None, headers=None):
+        if find_params:
+            self.__tag = find_params["find_tag"]
+            self.__key = find_params["argument_key"]
+            self.__value = find_params["argument_value"]
+            self.__item = find_params["get_item"]
+        self._data = payload
+        if headers:
+            self._headers = headers
+        else:
+            self._headers = self.__session.headers
+    def make_request(
+        self, method, url, find_params=None, *args, **kwargs
+    ):
+        self.set_req(find_params, *args, **kwargs)
+        if method == "GET":
+            request = self.get(url)
+        elif method == "POST":
+            request = self.post(url)
+        # Check whether we sent BS4 find parameters
+        # TODO: fix double check of find_params
+        # TODO: refactor set_req() to wrap parse_html()
+        if find_params:
+            return self.parse_html(request.text)
+        else:
+            return request
+    def get(self, url, *args, **kwargs):
+        self.__rqst = self.__session.get(
+            url, data=self._data, headers=self._headers
+        )
+        self.last_url = self.__rqst.url
+        return self.__rqst
+    def post(self, url, *args, **kwargs):
+        self.__rqst = self.__session.post(
+            url, data=self._data, headers=self._headers
+        )
+        self.last_url = self.__rqst.url
+        return self.__rqst
+    def parse_html(self, html):
+        parser = BeautifulSoup(html, "lxml")
+        return parser.find(self.__tag, {self.__key: self.__value}).get(
+            self.__item
+        )
+    def get_cookie(self, cookie_name):
+        return self.__session.cookies.get(cookie_name)
+    def set_event_info(self, events_json):
+        el = json.loads(events_json)
+        self.event_id = el[1]["data"]["id_event"]
+        self.event_desc = el[1]["description"]
+        self.event_date = el[1]["date"]
+        self.event_turl = el[1]["vod_firstfile_url"]
+    def update_download_link(self, event_download_url):
+        self.event_durl = event_download_url
+    @staticmethod
+    def compile_dict(data, *args):
+        iter_args = iter(args)
+        for key in data:
+            if not data[key]:
+                data[key] = next(iter_args)
+        return data
 
 def main():
-    web = selenium_setup()
-    db = SQLighter()
-    # Get the environment variables decoded
-    url = decode_var(config.URL_ADSF_ENC)
-    uid = decode_var(environ[config.ENV_USER])
-    pwd = decode_var(environ[config.ENV_PASS])
-    # Get the cookies out of the successfully authorized session
-    cookies = selenium_login(web, url+uid, pwd)
-    # Then dispose browser and end the web session
-    web.quit()
-    # Deserialize app/json data to the event list
-    el = deserialize(request_events(*cookies))
-    # Compile an event dictionary for ensuining usage
-    ed = create_dict(el)
-    # Send an event-link with extracted tuple of cookies
-    url = request_link(ed['url_event'], *cookies)
-    # Add a new pair to the event dictionary
-    ed.update(url_download=url)
-    # Check by event_id if video is already presented in the DB
-    if not db.select_row_event(ed['event_id']):
-        # Download video with described name
-        print(download_file(ed['url_download'], ed['description']))
-        db.insert_row(**ed)
-    else:
-        print('%s already exists' % ed['event_id'])
-    db.close()
-    check_environment()
+    s = requests.Session()
+    # Open DB and an instance of customized session
+    with SQLighter() as db, JWSession(s) as jws:
+        # Make multiple requests to get a app/json events list
+        events = get_events(jws)
+        # Fill JWS with event information (id, description, url)
+        jws.set_event_info(events)
+        # Request a download link
+        durl = get_link(jws)
+        # Add a download link to the JWS instance
+        jws.update_download_link(durl)
+        # Check whether video is already presented in the DB
+        if not db.select_row_event(jws.event_id):
+            # ~/Downloads/video_name.mp4
+            fpath = (
+                expanduser("~")
+                + HOME_DIRECTORY
+                + jws.event_desc
+                + ".mp4"
+            )
+            print("Downloaded: %s" % download_file(durl, fpath))
+            # Add a note with the event information to the DB
+            db.insert_row_from_obj(jws)
+        else:
+            print("%s already exists" % jws.event_id)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
