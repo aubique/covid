@@ -1,0 +1,18 @@
+plugins {
+    id 'idea'
+}
+
+idea {
+    project {
+        languageLevel = 11
+    }
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+allprojects {
+    group = 'dev.aubique'
+    version = '0.0.1'
+}

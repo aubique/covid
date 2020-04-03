@@ -1,0 +1,2 @@
+rootProject.name = 'covid'
+include 'covid-ui'

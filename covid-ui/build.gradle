@@ -1,0 +1,27 @@
+plugins {
+  id("java")
+  id("com.github.node-gradle.node") version "2.2.0"
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+
+node {
+  version = '10.13.0'
+  npmVersion = '6.4.0'
+  download = true
+}
+
+repositories.whenObjectAdded {
+  if (it instanceof IvyArtifactRepository) {
+    metadataSources {
+      artifact()
+    }
+  }
+}
+
+jar.dependsOn 'npm_run_build'
+
+clean {
+  delete file("${projectDir}/dist")
+}
+
