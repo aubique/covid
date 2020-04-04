@@ -19,6 +19,9 @@ FusionChartsModule.fcRoot(FusionCharts, FranceMap, FusionMaps, FusionTheme);
     CommonModule,
     SharedModule,
   ],
+  exports: [
+    MapPageComponent,
+  ],
 })
 export class MapPageModule {
 }

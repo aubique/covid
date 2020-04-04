@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MapData } from 'src/app/core/mock/MapData';
+import { MapData } from '@app/mock/MapData';
+import { CovidService } from '@app/services/covid.service';
 
 const colorrange = {
   'minvalue': '0',
@@ -20,7 +21,7 @@ export class FrancePageComponent implements OnInit {
   dataSource: Object;
   title = 'France map';
 
-  constructor() {
+  constructor(private service: CovidService) {
     this.dataSource = {
       'chart': {
         'animation': '0',
@@ -44,5 +45,6 @@ export class FrancePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.service.handleCsvFile();
   }
 }
