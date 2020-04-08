@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InfoDto } from '@app/models/InfoDto';
-import { CovidService } from '@app/services/covid.service';
+import { CsvDto } from '@app/models/CsvDto';
+import { FacadeService } from '@app/services/facade.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,13 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class CsvPageComponent implements OnInit {
 
-  csvInformation$: Observable<Array<InfoDto>>;
+  csvInformation$: Observable<Array<CsvDto>>;
 
-  constructor(private service: CovidService) {
+  constructor(private facade: FacadeService) {
   }
 
   ngOnInit(): void {
-    this.service.handleCsvFile();
-    this.csvInformation$ = this.service.informationList$;
+    this.facade.loadCsvFromOpencovid();
+    this.csvInformation$ = this.facade.informationList$;
   }
 }

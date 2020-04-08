@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MapData } from '@app/mock/MapData';
-import { CovidService } from '@app/services/covid.service';
+import { DataSourceFusion } from '@app/models/fusion/DataSourceFusion';
+import { FacadeService } from '@app/services/facade.service';
+import { ChartMock } from '@shared/constants/data/ChartMock';
+import { ColorrangeMock } from '@shared/constants/data/ColorrangeMock';
+import { DataListMock } from '@shared/constants/data/DataListMock';
 
-const colorrange = {
-  'minvalue': '0',
-  'startlabel': 'Low',
-  'endlabel': 'High',
-  'code': 'e44a00',
-  'gradient': '1',
-  'color': [{'maxvalue': '2500', 'code': 'f8bd19'}, {'maxvalue': '5000', 'code': '6baa01'}],
-};
 
 @Component({
   selector: 'app-france-page',
@@ -18,33 +13,18 @@ const colorrange = {
 })
 export class FrancePageComponent implements OnInit {
 
-  dataSource: Object;
+  dataSource: DataSourceFusion;
   title = 'France map';
 
-  constructor(private service: CovidService) {
+  constructor(private facade: FacadeService) {
     this.dataSource = {
-      'chart': {
-        'animation': '0',
-        'showbevel': '0',
-        'usehovercolor': '1',
-        'showlegend': '1',
-        'legendposition': 'BOTTOM',
-        'legendborderalpha': '0',
-        'legendbordercolor': 'ffffff',
-        'legendallowdrag': '0',
-        'legendshadow': '0',
-        'caption': 'Website Visits for the month of March 2018',
-        'connectorcolor': '000000',
-        'fillalpha': '80',
-        'hovercolor': 'CCCCCC',
-        'theme': 'fusion',
-      },
-      'colorrange': colorrange,
-      'data': MapData,
-    };
+      chart: ChartMock,
+      colorrange: ColorrangeMock,
+      data: DataListMock,
+    } as DataSourceFusion;
   }
 
   ngOnInit(): void {
-    this.service.handleCsvFile();
+    this.facade.loadCsvFromOpencovid();
   }
 }
