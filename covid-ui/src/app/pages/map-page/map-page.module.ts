@@ -7,11 +7,12 @@ import { FusionChartsModule } from 'angular-fusioncharts';
 import * as FusionCharts from 'fusioncharts';
 import * as FusionMaps from 'fusioncharts/fusioncharts.maps';
 import * as FranceMap from 'fusioncharts/maps/fusioncharts.france';
+import * as FranceDepartment from 'fusioncharts/maps/fusioncharts.francedepartment';
 import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import { MapPageComponent } from './map-page.component';
 
 
-FusionChartsModule.fcRoot(FusionCharts, FranceMap, FusionMaps, FusionTheme);
+FusionChartsModule.fcRoot(FusionCharts, FranceMap, FranceDepartment, FusionMaps, FusionTheme);
 
 @NgModule({
   declarations: [MapPageComponent],

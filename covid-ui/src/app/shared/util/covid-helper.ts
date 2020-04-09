@@ -1,4 +1,4 @@
-export class HelperCovid {
+export class CovidHelper {
 
   public static readonly FIELD_SEPARATOR = ';';
 
@@ -17,7 +17,7 @@ export class HelperCovid {
   }
 
   public static extractDate(line: string): Date {
-    const date = line.split(HelperCovid.FIELD_SEPARATOR)[2];
+    const date = line.split(CovidHelper.FIELD_SEPARATOR)[2];
     return new Date(Date.parse(date));
   }
 

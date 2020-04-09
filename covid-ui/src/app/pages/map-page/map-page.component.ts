@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CovidService } from '@app/services/covid.service';
+
+import { DataSourceFusion } from '@app/models/fusion/DataSourceFusion';
+import { FacadeService } from '@app/services/facade.service';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-map-page',
@@ -8,11 +12,14 @@ import { CovidService } from '@app/services/covid.service';
 })
 export class MapPageComponent implements OnInit {
 
-  constructor(
-    private service: CovidService,
-  ) {
+  mapData: BehaviorSubject<DataSourceFusion>;
+  title = 'France departments';
+
+  constructor(private facade: FacadeService) {
   }
 
   ngOnInit(): void {
+    this.mapData = this.facade.mapDataSource$;
+    this.facade.loadCsvFromOpencovid();
   }
 }
