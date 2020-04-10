@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DataSourceFusion } from '@app/models/fusion/DataSourceFusion';
+import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
 import { FacadeService } from '@app/services/facade.service';
-import { ChartMock } from '@shared/constants/data/ChartMock';
-import { ColorrangeMock } from '@shared/constants/data/ColorrangeMock';
-import { DataListMock } from '@shared/constants/data/DataListMock';
+import { ChartMock } from '@shared/constants/data/chart.mock';
+import { ColorrangeMock } from '@shared/constants/data/colorrange.mock';
+import { DatalistMock } from '@shared/constants/data/datalist.mock';
 
 
 @Component({
@@ -13,15 +13,15 @@ import { DataListMock } from '@shared/constants/data/DataListMock';
 })
 export class FrancePageComponent implements OnInit {
 
-  dataSource: DataSourceFusion;
+  dataSource: DatasourceFusion;
   title = 'France map';
 
   constructor(private facade: FacadeService) {
     this.dataSource = {
       chart: ChartMock,
       colorrange: ColorrangeMock,
-      data: DataListMock,
-    } as DataSourceFusion;
+      data: DatalistMock,
+    } as DatasourceFusion;
   }
 
   ngOnInit(): void {

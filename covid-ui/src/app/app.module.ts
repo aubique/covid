@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CoreModule } from '@app/core.module';
-import { MapPageModule } from '@modules/map-page/map-page.module';
+import { ContentModule } from '@modules/content/content.module';
 import { SharedModule } from '@shared/shared.module';
 import { AppComponent } from './app.component';
 
@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     // Page modules
-    MapPageModule,
+    ContentModule,
     // Core & Shared
     CoreModule,
     SharedModule,

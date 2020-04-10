@@ -1,4 +1,4 @@
-import { ChartFusion } from '@app/models/fusion/ChartFusion';
+import { ChartFusion } from '@app/models/fusion/chart-fusion';
 
 export const ChartMock = {
   animation: 0,

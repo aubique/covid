@@ -1,1 +1,22 @@
-<p>header works!</p>
+<div id="header-container">
+
+  <mat-toolbar class="toolbar"
+               color="primary"
+               fxLayout="row"
+               fxLayoutAlign="space-evenly center">
+
+    <label id="information-type-label">More information</label>
+    <mat-radio-group class="radio-group"
+                     aria-label="information-type-label"
+                     [value]="typeInfoState | async">
+
+      <mat-radio-button (click)="onClick(HOSP_ENUM)" [value]="HOSP_ENUM">hosp</mat-radio-button>
+      <mat-radio-button (click)="onClick(REA_ENUM)" [value]="REA_ENUM">rea</mat-radio-button>
+      <mat-radio-button (click)="onClick(RED_ENUM)" [value]="RED_ENUM">red</mat-radio-button>
+      <mat-radio-button (click)="onClick(DC_ENUM)" [value]="DC_ENUM">dc</mat-radio-button>
+
+    </mat-radio-group>
+
+  </mat-toolbar>
+
+</div>

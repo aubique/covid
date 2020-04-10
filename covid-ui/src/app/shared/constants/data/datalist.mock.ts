@@ -1,6 +1,6 @@
-import { DataFusion } from '@app/models/DataFusion';
+import { CasesData } from '@app/models/cases-data';
 
-export const DataListMock = [
+export const DatalistMock = [
   {id: '002', value: 2834},
   {id: '003', value: 182},
   {id: '004', value: 312},
@@ -29,4 +29,4 @@ export const DataListMock = [
   {id: '027', value: 378},
   {id: '028', value: 74},
   {id: '029', value: 2610},
-] as DataFusion[];
+] as Array<CasesData>;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CsvDto } from '@app/models/CsvDto';
+import { CsvDto } from '@app/models/csv-dto';
+import { FusionDto } from '@app/models/fusion-dto';
 import { FacadeService } from '@app/services/facade.service';
 import { Observable } from 'rxjs';
 
@@ -10,13 +11,14 @@ import { Observable } from 'rxjs';
 })
 export class CsvPageComponent implements OnInit {
 
-  csvInformation$: Observable<Array<CsvDto>>;
+  listState: Observable<Array<CsvDto | FusionDto>>;
 
   constructor(private facade: FacadeService) {
   }
 
   ngOnInit(): void {
     this.facade.loadCsvFromOpencovid();
-    this.csvInformation$ = this.facade.informationList$;
+    this.facade.loadMap();
+    this.listState = this.facade.fusionList$;
   }
 }

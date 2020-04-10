@@ -1,4 +1,4 @@
-export interface DataFusion {
+export interface CasesData {
 
   id: string;
   value: number;

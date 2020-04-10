@@ -1,4 +1,4 @@
-export const DepartmentCodeRecord = {
+export const DepartmentCode = {
   '01': 'FR.AI',
   '02': 'FR.AS',
   '03': 'FR.AL',
@@ -11,7 +11,7 @@ export const DepartmentCodeRecord = {
   '10': 'FR.AB',
   '11': 'FR.AD',
   '12': 'FR.BD',
-  '13': 'FR.BR',
+  '13': 'FR.AV',
   '14': 'FR.CV',
   '15': 'FR.CL',
   '16': 'FR.CT',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService } from '@app/http/api.service';
-import { CsvDto } from '@app/models/CsvDto';
+import { CsvDto } from '@app/models/csv-dto';
 import { StoreService } from '@app/services/store.service';
 import { CovidHelper } from '@shared/util/covid-helper';
 import { FactoryHelper } from '@shared/util/factory-helper';
@@ -27,7 +27,7 @@ export class OpencovidService {
       console.log('HANDLE CSV FILE');
       console.log(infoDtoList);
 
-      this.store.csvInformation$.next(infoDtoList);
+      this.store.csvList$.next(infoDtoList);
     });
   }
 

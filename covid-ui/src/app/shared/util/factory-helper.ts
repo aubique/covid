@@ -1,10 +1,10 @@
-import { CsvDto } from '@app/models/CsvDto';
-import { DataFusion } from '@app/models/DataFusion';
-import { DataSourceFusion } from '@app/models/fusion/DataSourceFusion';
-import { FusionDto } from '@app/models/FusionDto';
-import { ChartMock } from '@shared/constants/data/ChartMock';
-import { ColorrangeMock } from '@shared/constants/data/ColorrangeMock';
-import { DepartmentCodeRecord } from '@shared/constants/maps/DepartmentCodeRecord';
+import { CsvDto } from '@app/models/csv-dto';
+import { CasesData } from '@app/models/cases-data';
+import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
+import { FusionDto } from '@app/models/fusion-dto';
+import { ChartMock } from '@shared/constants/data/chart.mock';
+import { ColorrangeMock } from '@shared/constants/data/colorrange.mock';
+import { DepartmentCode } from '@shared/constants/maps/department-code';
 
 
 export class FactoryHelper {
@@ -23,17 +23,17 @@ export class FactoryHelper {
   }
 
   public static newDataDefault(
-    departmentId: string, value: number): DataFusion {
+    departmentId: string, value: number): CasesData {
 
     return {
-      id: DepartmentCodeRecord[departmentId],
+      id: DepartmentCode[departmentId],
       value: value,
-    } as DataFusion;
+    } as CasesData;
   }
 
   public static newDateInfo(
-    hospObj: DataFusion, reaObj: DataFusion, radObj: DataFusion,
-    dcObj: DataFusion, label?: string): FusionDto {
+    hospObj: CasesData, reaObj: CasesData, radObj: CasesData,
+    dcObj: CasesData, label?: string): FusionDto {
 
     return {
       hosp: hospObj,
@@ -44,14 +44,22 @@ export class FactoryHelper {
     } as FusionDto;
   }
 
-  public static newMapDataSource(fusionList: FusionDto[]): DataSourceFusion {
-    const dataDefaultList = new Array<DataFusion>();
-    fusionList.forEach(dto => dataDefaultList.push(dto.hosp));
+  // public static newMapDataSource(fusionList: FusionDto[]): DatasourceFusion {
+  //   const dataList = new Array<CasesData>();
+  //   fusionList.forEach(dto => dataList.push(dto.hosp));
+  //
+  //   return {
+  //     chart: ChartMock,
+  //     colorrange: ColorrangeMock,
+  //     data: dataList,
+  //   } as DatasourceFusion;
+  // }
 
+  public static newMapDataSource(dataList: Array<CasesData>): DatasourceFusion {
     return {
       chart: ChartMock,
       colorrange: ColorrangeMock,
-      data: dataDefaultList,
-    } as DataSourceFusion;
+      data: dataList,
+    } as DatasourceFusion;
   }
 }

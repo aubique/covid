@@ -16,6 +16,7 @@
     "@angular/common": "~9.1.11",
     "@angular/compiler": "~9.1.11",
     "@angular/core": "^9.1.11",
+    "@angular/flex-layout": "^9.0.0-beta.31",
     "@angular/forms": "~9.1.11",
     "@angular/material": "^9.2.4",
     "@angular/platform-browser": "~9.1.11",
@@ -23,6 +24,8 @@
     "@angular/router": "~9.1.11",
     "angular-fusioncharts": "^3.0.4",
     "fusioncharts": "^3.15.1-sr.1",
+    "i": "^0.3.6",
+    "npm": "^6.14.5",
     "rxjs": "^6.5.5",
     "tslib": "^1.13.0",
     "zone.js": "^0.10.3"

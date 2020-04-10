@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { CsvDto } from '@app/models/CsvDto';
-import { FusionDto } from '@app/models/FusionDto';
+import { CsvDto } from '@app/models/csv-dto';
+import { FusionDto } from '@app/models/fusion-dto';
 import { StoreService } from '@app/services/store.service';
 import { FactoryHelper } from '@shared/util/factory-helper';
 
@@ -18,8 +18,9 @@ export class MapperService {
   ) {
   }
 
+  //TODO merge with opencovid.service and loader.service(?)
   public batchCsv(): void {
-    this.store.csvInformation$
+    this.store.csvList$
       .pipe(
         filter((list) => list !== null),
         map((csvList) => {
@@ -31,13 +32,14 @@ export class MapperService {
       .subscribe((fusionList) => {
         console.log('BATCH FUSION DTO');
         console.log(fusionList);//TODO remove
+        this.store.fusionList$.next(fusionList);
 
-        const mapData = FactoryHelper.newMapDataSource(fusionList);
-        this.store.mapDataSource$.next(mapData);
+        // const mapDataState = FactoryHelper.newMapDataSource(fusionList);
+        // this.store.mapDataSource$.next(mapDataState);
       });
   }
 
-  private static toDataInfoList(csvList: CsvDto[]): FusionDto[] {
+  private static toDataInfoList(csvList: Array<CsvDto>): Array<FusionDto> {
     const dataList = new Array<FusionDto>();
     csvList.forEach(csv =>
       dataList.push(MapperService.toDateInfo(csv)));

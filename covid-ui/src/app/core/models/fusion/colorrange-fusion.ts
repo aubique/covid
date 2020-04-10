@@ -1,4 +1,4 @@
-import { ColorFusion } from '@app/models/fusion/ColorFusion';
+import { ColorFusion } from '@app/models/fusion/color-fusion';
 
 export interface ColorrangeFusion {
 
