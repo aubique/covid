@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
 import { FacadeService } from '@app/services/facade.service';
-
 import { BehaviorSubject } from 'rxjs';
 
 

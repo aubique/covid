@@ -1,10 +1,12 @@
-import { CsvDto } from '@app/models/csv-dto';
 import { CasesData } from '@app/models/cases-data';
-import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
+import { CsvDto } from '@app/models/csv-dto';
+import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
 import { FusionDto } from '@app/models/fusion-dto';
+import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
 import { ChartMock } from '@shared/constants/data/chart.mock';
 import { ColorrangeMock } from '@shared/constants/data/colorrange.mock';
 import { DepartmentCode } from '@shared/constants/maps/department-code';
+import { BehaviorSubject } from 'rxjs';
 
 
 export class FactoryHelper {
@@ -44,22 +46,26 @@ export class FactoryHelper {
     } as FusionDto;
   }
 
-  // public static newMapDataSource(fusionList: FusionDto[]): DatasourceFusion {
-  //   const dataList = new Array<CasesData>();
-  //   fusionList.forEach(dto => dataList.push(dto.hosp));
-  //
-  //   return {
-  //     chart: ChartMock,
-  //     colorrange: ColorrangeMock,
-  //     data: dataList,
-  //   } as DatasourceFusion;
-  // }
-
   public static newMapDataSource(dataList: Array<CasesData>): DatasourceFusion {
     return {
       chart: ChartMock,
       colorrange: ColorrangeMock,
       data: dataList,
     } as DatasourceFusion;
+  }
+
+  public static newTypeSubject(typeInfoStr: string): BehaviorSubject<TypeInfoEnum> {
+    switch (typeInfoStr) {
+      case TypeInfoEnum.Hosp.toString():
+        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Hosp);
+      case TypeInfoEnum.Rea.toString():
+        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Rea);
+      case TypeInfoEnum.Rad.toString():
+        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Rad);
+      case TypeInfoEnum.Dc.toString():
+        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Dc);
+      default:
+        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Hosp);
+    }
   }
 }

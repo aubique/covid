@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
 import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
 import { FacadeService } from '@app/services/facade.service';
+
+import { faAmbulance, faDizzy, faHospitalUser, faProcedures, faSmile } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-header',
@@ -10,11 +14,18 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
-  readonly HOSP_ENUM = TypeInfoEnum.Hosp;
-  readonly REA_ENUM = TypeInfoEnum.Rea;
-  readonly RED_ENUM = TypeInfoEnum.Rad;
-  readonly DC_ENUM = TypeInfoEnum.Dc;
+  readonly HOSP_BTN = {text: 'Hospitalized', enum: TypeInfoEnum.Hosp};
+  readonly REA_BTN = {text: 'Intensive Care', enum: TypeInfoEnum.Rea};
+  readonly RAD_BTN = {text: 'Recovered', enum: TypeInfoEnum.Rad};
+  readonly DC_BTN = {text: 'Deaths', enum: TypeInfoEnum.Dc};
+
   typeInfoState: BehaviorSubject<TypeInfoEnum>;
+
+  faAmbulance = faAmbulance;
+  faHospitalUser = faHospitalUser;
+  faDizzy = faDizzy;
+  faSmile = faSmile;
+  faProcedures = faProcedures;
 
   constructor(private facade: FacadeService) {
   }

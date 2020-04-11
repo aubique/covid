@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CsvPageComponent } from '@shared/components/csv-page/csv-page.component';
 import { FrancePageComponent } from '@shared/components/france-page/france-page.component';
-import { MaterialModule } from '@shared/material.module';
 import { PrettyjsonPipe } from '@shared/pipe/prettyjson.pipe';
-
 import { FusionChartsModule } from 'angular-fusioncharts';
 
 
@@ -18,20 +18,24 @@ import { FusionChartsModule } from 'angular-fusioncharts';
     PrettyjsonPipe,
   ],
   imports: [
+    // Angular
     CommonModule,
-    MaterialModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    // 3rd Party
+    NgbModule,
+    FontAwesomeModule,
     FusionChartsModule,
   ],
   exports: [
     // Angular
-    MaterialModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
     FormsModule,
-    // 3rd Party Lib
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    // 3rd Party libs
+    NgbModule,
+    FontAwesomeModule,
     FusionChartsModule,
     // Test Pages and Pipe
     FrancePageComponent,

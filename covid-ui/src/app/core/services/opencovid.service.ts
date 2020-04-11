@@ -5,6 +5,8 @@ import { CsvDto } from '@app/models/csv-dto';
 import { StoreService } from '@app/services/store.service';
 import { CovidHelper } from '@shared/util/covid-helper';
 import { FactoryHelper } from '@shared/util/factory-helper';
+import { MapperHelper } from '@shared/util/mapper-helper';
+import { filter, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -29,6 +31,24 @@ export class OpencovidService {
 
       this.store.csvList$.next(infoDtoList);
     });
+  }
+
+  public batchCsv(): void {
+    this.store.csvList$
+      .pipe(
+        filter((list) => list !== null),
+        map((csvList) => {
+          console.log('BATCH CSV DTO');
+          console.log(csvList);//TODO remove output
+
+          return MapperHelper.toDataInfoList(csvList);
+        }))
+      .subscribe((fusionList) => {
+        console.log('BATCH FUSION DTO');
+        console.log(fusionList);//TODO remove
+
+        this.store.fusionList$.next(fusionList);
+      });
   }
 
   private compileTodayList(lines: string[]): CsvDto[] {

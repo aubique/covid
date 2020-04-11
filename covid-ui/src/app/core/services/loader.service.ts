@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { CasesData } from '@app/models/cases-data';
 import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
-import { FusionDto } from '@app/models/fusion-dto';
 import { StoreService } from '@app/services/store.service';
 import { FactoryHelper } from '@shared/util/factory-helper';
+import { MapperHelper } from '@shared/util/mapper-helper';
 
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 
@@ -27,7 +26,7 @@ export class LoaderService {
         const lastTypeInfo = this.store.typeInfo$.getValue();
         console.log('FUSION LIST has been changed');
 
-        const dataList = LoaderService.toDateList(lastTypeInfo, fusionList);
+        const dataList = MapperHelper.toDateList(lastTypeInfo, fusionList);
         const mapDataSource = FactoryHelper.newMapDataSource(dataList);
 
         this.store.mapDatasource$.next(mapDataSource);
@@ -40,38 +39,11 @@ export class LoaderService {
         const lastFusionList = this.store.fusionList$.getValue();
         console.log('TYPE INFO has been changed');
 
-        const dataList = LoaderService.toDateList(typeInfo, lastFusionList);
+        const dataList = MapperHelper.toDateList(typeInfo, lastFusionList);
         const mapDataSource = FactoryHelper.newMapDataSource(dataList);
 
         this.store.mapDatasource$.next(mapDataSource);
       });
-  }
-
-  //TODO put it to mapper-helper.ts
-  private static toDateList(typeInfo: TypeInfoEnum, fusionList: Array<FusionDto>): Array<CasesData> {
-    const dataList = new Array<CasesData>();
-
-    fusionList.forEach(dto => {
-      const dataTypeChosen = this.determineDataType(typeInfo, dto);
-      dataList.push(dataTypeChosen);
-    });
-
-    return dataList;
-  }
-
-  private static determineDataType(typeInfo: TypeInfoEnum, dto: FusionDto): CasesData {
-    switch (typeInfo) {
-      case TypeInfoEnum.Hosp:
-        return dto.hosp;
-      case TypeInfoEnum.Rea:
-        return dto.rea;
-      case TypeInfoEnum.Rad:
-        return dto.rad;
-      case TypeInfoEnum.Dc:
-        return dto.dc;
-      default:
-        return dto.hosp;
-    }
   }
 
   public saveTypeInfo(typeInfoEnum: TypeInfoEnum): void {
@@ -83,26 +55,6 @@ export class LoaderService {
     let typeInfoStr: string;
 
     typeInfoStr = localStorage.getItem(LoaderService.STORAGE_TYPE_INFO);
-    this.initTypeSubject(typeInfoStr);
-  }
-
-  private initTypeSubject(typeInfoStr: string): void {
-    switch (typeInfoStr) {
-      case TypeInfoEnum.Hosp.toString():
-        this.store.typeInfo$ = new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Hosp);
-        break;
-      case TypeInfoEnum.Rea.toString():
-        this.store.typeInfo$ = new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Rea);
-        break;
-      case TypeInfoEnum.Rad.toString():
-        this.store.typeInfo$ = new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Rad);
-        break;
-      case TypeInfoEnum.Dc.toString():
-        this.store.typeInfo$ = new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Dc);
-        break;
-      default:
-        this.store.typeInfo$ = new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Hosp);
-        break;
-    }
+    this.store.typeInfo$ = FactoryHelper.newTypeSubject(typeInfoStr);
   }
 }

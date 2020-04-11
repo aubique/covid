@@ -1,22 +1,37 @@
-<div id="header-container">
+<div class="container">
+  <nav class="toolbar navbar navbar-expand-lg navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">COVID 19 Map</span>
 
-  <mat-toolbar class="toolbar"
-               color="primary"
-               fxLayout="row"
-               fxLayoutAlign="space-evenly center">
+    <div ngbRadioGroup
+         name="radioTypeInfo"
+         class="radio-group btn-group btn-group-toggle"
+         [ngModel]="typeInfoState | async">
 
-    <label id="information-type-label">More information</label>
-    <mat-radio-group class="radio-group"
-                     aria-label="information-type-label"
-                     [value]="typeInfoState | async">
+      <label ngbButtonLabel class="btn-outline-warning">
+        <input ngbButton type="radio" (click)="onClick(HOSP_BTN.enum)" [value]="HOSP_BTN.enum">
+        <fa-icon [icon]="faHospitalUser"></fa-icon>
+        <span> {{HOSP_BTN.text}}</span>
+      </label>
 
-      <mat-radio-button (click)="onClick(HOSP_ENUM)" [value]="HOSP_ENUM">hosp</mat-radio-button>
-      <mat-radio-button (click)="onClick(REA_ENUM)" [value]="REA_ENUM">rea</mat-radio-button>
-      <mat-radio-button (click)="onClick(RED_ENUM)" [value]="RED_ENUM">red</mat-radio-button>
-      <mat-radio-button (click)="onClick(DC_ENUM)" [value]="DC_ENUM">dc</mat-radio-button>
+      <label ngbButtonLabel class="btn-outline-danger">
+        <input ngbButton type="radio" (click)="onClick(REA_BTN.enum)" [value]="REA_BTN.enum">
+        <fa-icon [icon]="faProcedures"></fa-icon>
+        <span> {{REA_BTN.text}}</span>
+      </label>
 
-    </mat-radio-group>
+      <label ngbButtonLabel class="btn-outline-success">
+        <input ngbButton type="radio" (click)="onClick(RAD_BTN.enum)" [value]="RAD_BTN.enum">
+        <fa-icon [icon]="faSmile"></fa-icon>
+        <span> {{RAD_BTN.text}}</span>
+      </label>
 
-  </mat-toolbar>
+      <label ngbButtonLabel class="btn-outline-dark">
+        <input ngbButton type="radio" (click)="onClick(DC_BTN.enum)" [value]="DC_BTN.enum">
+        <fa-icon [icon]="faDizzy"></fa-icon>
+        <span> {{DC_BTN.text}}</span>
+      </label>
 
+    </div>
+
+  </nav>
 </div>
