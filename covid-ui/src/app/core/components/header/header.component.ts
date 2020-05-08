@@ -2,8 +2,16 @@ import { Component, OnInit } from '@angular/core';
 
 import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
 import { FacadeService } from '@app/services/facade.service';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-import { faAmbulance, faDizzy, faHospitalUser, faProcedures, faSmile } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAmbulance,
+  faDizzy,
+  faGlobeEurope,
+  faHospitalUser,
+  faProcedures,
+  faSmile,
+} from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 
 
@@ -21,11 +29,13 @@ export class HeaderComponent implements OnInit {
 
   typeInfoState: BehaviorSubject<TypeInfoEnum>;
 
+  faGlobalEurope = faGlobeEurope;
   faAmbulance = faAmbulance;
   faHospitalUser = faHospitalUser;
   faDizzy = faDizzy;
   faSmile = faSmile;
   faProcedures = faProcedures;
+  faGithub = faGithub;
 
   constructor(private facade: FacadeService) {
   }

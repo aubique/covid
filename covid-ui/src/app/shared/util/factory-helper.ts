@@ -5,7 +5,7 @@ import { FusionDto } from '@app/models/fusion-dto';
 import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
 import { ChartMock } from '@shared/constants/data/chart.mock';
 import { ColorrangeMock } from '@shared/constants/data/colorrange.mock';
-import { DepartmentCode } from '@shared/constants/maps/department-code';
+import { DepartmentCode } from '@shared/constants/code/department-code';
 import { BehaviorSubject } from 'rxjs';
 
 

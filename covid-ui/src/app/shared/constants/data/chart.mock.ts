@@ -10,7 +10,7 @@ export const ChartMock = {
   legendbordercolor: 'ffffff',
   legendallowdrag: 0,
   legendshadow: 0,
-  caption: 'Website Visits for the month of March 2018',
+  caption: 'France Coronavirus Map and Case Count',
   connectorcolor: '000000',
   fillalpha: '80',
   hovercolor: 'CCCCCC',

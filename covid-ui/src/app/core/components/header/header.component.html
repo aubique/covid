@@ -1,37 +1,50 @@
-<div class="container">
-  <nav class="toolbar navbar navbar-expand-lg navbar-light bg-light">
-    <span class="navbar-brand mb-0 h1">COVID 19 Map</span>
+<header class="header navbar navbar-light bg-light">
+  <div class="container-fluid flex-column flex-md-row pr-0">
 
-    <div ngbRadioGroup
-         name="radioTypeInfo"
-         class="radio-group btn-group btn-group-toggle"
-         [ngModel]="typeInfoState | async">
+    <div class="navbar-brand mr-md-2 mr-0 dark-gray">
+      <fa-icon [icon]="faGlobalEurope"></fa-icon>
+      <span> Covid-19 Map</span>
+    </div><!--Brand-->
 
-      <label ngbButtonLabel class="btn-outline-warning">
-        <input ngbButton type="radio" (click)="onClick(HOSP_BTN.enum)" [value]="HOSP_BTN.enum">
-        <fa-icon [icon]="faHospitalUser"></fa-icon>
-        <span> {{HOSP_BTN.text}}</span>
-      </label>
+    <div class="navbar-nav flex-row mx-md-auto"><!--Radio Button Group-->
+      <div ngbRadioGroup
+           name="radioTypeInfo"
+           class="radio-group btn-group btn-group-toggle"
+           [ngModel]="typeInfoState | async">
 
-      <label ngbButtonLabel class="btn-outline-danger">
-        <input ngbButton type="radio" (click)="onClick(REA_BTN.enum)" [value]="REA_BTN.enum">
-        <fa-icon [icon]="faProcedures"></fa-icon>
-        <span> {{REA_BTN.text}}</span>
-      </label>
+        <label ngbButtonLabel class="btn-outline-warning flex-row"><!--Hospital-->
+          <input ngbButton type="radio" (click)="onClick(HOSP_BTN.enum)" [value]="HOSP_BTN.enum">
+          <fa-icon [icon]="faHospitalUser" class="d-inline"></fa-icon>
+          <span class="d-none d-md-inline"> {{HOSP_BTN.text}}</span>
+        </label>
 
-      <label ngbButtonLabel class="btn-outline-success">
-        <input ngbButton type="radio" (click)="onClick(RAD_BTN.enum)" [value]="RAD_BTN.enum">
-        <fa-icon [icon]="faSmile"></fa-icon>
-        <span> {{RAD_BTN.text}}</span>
-      </label>
+        <label ngbButtonLabel class="btn-outline-danger flex-row"><!--Reanimation-->
+          <input ngbButton type="radio" (click)="onClick(REA_BTN.enum)" [value]="REA_BTN.enum"/>
+          <fa-icon [icon]="faProcedures" class="d-inline"></fa-icon>
+          <span class="d-none d-md-inline"> {{REA_BTN.text}}</span>
+        </label>
 
-      <label ngbButtonLabel class="btn-outline-dark">
-        <input ngbButton type="radio" (click)="onClick(DC_BTN.enum)" [value]="DC_BTN.enum">
-        <fa-icon [icon]="faDizzy"></fa-icon>
-        <span> {{DC_BTN.text}}</span>
-      </label>
+        <label ngbButtonLabel class="btn-outline-success flex-row"><!--Recovered-->
+          <input ngbButton type="radio" (click)="onClick(RAD_BTN.enum)" [value]="RAD_BTN.enum">
+          <fa-icon [icon]="faSmile" class="d-inline"></fa-icon>
+          <span class="d-none d-md-inline"> {{RAD_BTN.text}}</span>
+        </label>
 
+        <label ngbButtonLabel class="btn-outline-dark flex-row"><!--Deaths-->
+          <input ngbButton type="radio" (click)="onClick(DC_BTN.enum)" [value]="DC_BTN.enum">
+          <fa-icon [icon]="faDizzy" class="d-inline"></fa-icon>
+          <span class="d-none d-md-inline"> {{DC_BTN.text}}</span>
+        </label>
+
+      </div>
     </div>
 
-  </nav>
-</div>
+    <div class="navbar-nav flex-row ml-md-auto d-none d-md-flex align-items-center dark-gray"><!--Social Buttons-->
+      <a href="https://github.com/aubique/covid.git" rel="noopener" target="_blank">
+        <fa-icon [icon]="faGithub" size="lg">
+        </fa-icon>
+      </a>
+    </div>
+
+  </div>
+</header>
