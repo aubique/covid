@@ -1,20 +1,24 @@
-# Covid Tracker
+# Visualize COVID-19 cases in France
 
-Web app to track COVID-19 cases in France.
+The heat map is a graphical representation of COVID-19 case data to give a
+quick impression of the location of cases in every region of France.
+The map is daily updated.
+
+<img src="./screenshot_1.jpg" height="400" />
 
 ## Tech Stack
 
-This project constitutes a sort of an REST API-backed Single Page
-Application (SPA).
+This project is a single-page application (SPA) with interactive map:
 
 ### Front-End:
 - Angular 9
-- Angular Material UI
-- Angular Flex-Layout
+- Bootstrap 4.5
+- FusionCharts map library
+- Font Awesome icons
 
 ## Development
 
-To start the Angular Webpack dev-server on `localhost:4200` execute:
+Start the Angular dev-server on `localhost:4200` in root directory:
 ```
 ./gradlew npm_start
 ```
