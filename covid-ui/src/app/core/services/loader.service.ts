@@ -26,8 +26,11 @@ export class LoaderService {
         const lastTypeInfo = this.store.typeInfo$.getValue();
         console.log('FUSION LIST has been changed');
 
+        const maxValue = this.store.maxvalueMap$.getValue().get(lastTypeInfo);
+
         const dataList = MapperHelper.toDateList(lastTypeInfo, fusionList);
-        const mapDataSource = FactoryHelper.newMapDataSource(dataList);
+        const colorRange = FactoryHelper.newColorrange(maxValue);
+        const mapDataSource = FactoryHelper.newMapDataSource(dataList, colorRange);
 
         this.store.mapDatasource$.next(mapDataSource);
       });
@@ -39,8 +42,11 @@ export class LoaderService {
         const lastFusionList = this.store.fusionList$.getValue();
         console.log('TYPE INFO has been changed');
 
+        const maxValue = this.store.maxvalueMap$.getValue().get(typeInfo);
+
         const dataList = MapperHelper.toDateList(typeInfo, lastFusionList);
-        const mapDataSource = FactoryHelper.newMapDataSource(dataList);
+        const colorRange = FactoryHelper.newColorrange(maxValue);
+        const mapDataSource = FactoryHelper.newMapDataSource(dataList, colorRange);
 
         this.store.mapDatasource$.next(mapDataSource);
       });

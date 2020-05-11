@@ -2,10 +2,12 @@ import { CasesData } from '@app/models/cases-data';
 import { CsvDto } from '@app/models/csv-dto';
 import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
 import { FusionDto } from '@app/models/fusion-dto';
+import { ColorrangeFusion } from '@app/models/fusion/colorrange-fusion';
 import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
-import { ChartMock } from '@shared/constants/data/chart.mock';
-import { ColorrangeMock } from '@shared/constants/data/colorrange.mock';
 import { DepartmentCode } from '@shared/constants/code/department-code';
+import { ChartMock } from '@shared/constants/data/chart.mock';
+import { ColorCodeMock } from '@shared/constants/data/color-code.mock';
+import { MaxvalueListMock } from '@shared/constants/data/maxvalue-list.mock';
 import { BehaviorSubject } from 'rxjs';
 
 
@@ -46,10 +48,11 @@ export class FactoryHelper {
     } as FusionDto;
   }
 
-  public static newMapDataSource(dataList: Array<CasesData>): DatasourceFusion {
+  public static newMapDataSource(
+    dataList: Array<CasesData>, colorRange: ColorrangeFusion): DatasourceFusion {
     return {
       chart: ChartMock,
-      colorrange: ColorrangeMock,
+      colorrange: colorRange,
       data: dataList,
     } as DatasourceFusion;
   }
@@ -67,5 +70,34 @@ export class FactoryHelper {
       default:
         return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Hosp);
     }
+  }
+
+  public static newColorrange(maxValue: number) {
+    const minimumColor = ColorCodeMock.green;
+    const mediumColor = ColorCodeMock.yellow;
+    const maximumColor = ColorCodeMock.red;
+
+    return {
+      minvalue: 0,
+      startlabel: 'Low',
+      endlabel: 'High',
+      code: minimumColor,
+      gradient: 1,
+      color: [
+        {maxvalue: Number(maxValue / 2), code: mediumColor},
+        {maxvalue: maxValue, code: maximumColor},
+      ],
+    } as ColorrangeFusion;
+  }
+
+  public static newMaxvalueMap(): Map<TypeInfoEnum, number> {
+    const maxvalues = new Map<TypeInfoEnum, number>();
+
+    maxvalues.set(TypeInfoEnum.Hosp, MaxvalueListMock[TypeInfoEnum.Hosp]);
+    maxvalues.set(TypeInfoEnum.Rea, MaxvalueListMock[TypeInfoEnum.Rea]);
+    maxvalues.set(TypeInfoEnum.Rad, MaxvalueListMock[TypeInfoEnum.Rad]);
+    maxvalues.set(TypeInfoEnum.Dc, MaxvalueListMock[TypeInfoEnum.Dc]);
+
+    return maxvalues;
   }
 }

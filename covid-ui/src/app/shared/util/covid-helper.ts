@@ -25,7 +25,7 @@ export class CovidHelper {
     return new Date(dateObj).toISOString().slice(0, 10);
   }
 
-  public static unifyDate(dateTxt: string): string {
+  public static getStandardDate(dateTxt: string): string {
     return this.convertDate(new Date(Date.parse(dateTxt)));
   }
 }
