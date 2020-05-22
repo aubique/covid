@@ -8,7 +8,7 @@ The map is daily updated.
 
 ## Tech Stack
 
-This project is a single-page application (SPA) with interactive map:
+This project is a single-page application (SPA) with interactive map.
 
 ### Front-End:
 - Angular 9

@@ -4,10 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
+    "buildDev": "ng build",
+    "buildWatch": "ng-build --watch=true",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "aws-deploy": "aws s3 sync dist/covid-ui/ s3://covid19map.fr"
   },
   "private": true,
   "dependencies": {

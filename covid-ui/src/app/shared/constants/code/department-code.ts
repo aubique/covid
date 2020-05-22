@@ -69,7 +69,7 @@ export const DepartmentCode = {
   '67': 'FR.BR',
   '68': 'FR.HR',
   '69': 'FR.RH',
-  '690': 'FR.ME',
+  '69M': 'FR.ME',
   '70': 'FR.HN',
   '71': 'FR.SL',
   '72': 'FR.ST',

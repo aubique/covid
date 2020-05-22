@@ -21,27 +21,25 @@ export class LoaderService {
 
   public triggerByFusionList(): Subscription {
     return this.store.fusionList$.pipe(
-      filter(list => list !== null))
-      .subscribe((fusionList) => {
-        const lastTypeInfo = this.store.typeInfo$.getValue();
-        console.log('FUSION LIST has been changed');
+      filter(list => list !== null),
+    ).subscribe((fusionList) => {
+      const lastTypeInfo = this.store.typeInfo$.getValue();
+      // console.log('FUSION LIST has been changed');
+      const maxValue = this.store.maxvalueMap$.getValue().get(lastTypeInfo);
 
-        const maxValue = this.store.maxvalueMap$.getValue().get(lastTypeInfo);
+      const dataList = MapperHelper.toDateList(lastTypeInfo, fusionList);
+      const colorRange = FactoryHelper.newColorrange(maxValue);
+      const mapDataSource = FactoryHelper.newMapDataSource(dataList, colorRange);
 
-        const dataList = MapperHelper.toDateList(lastTypeInfo, fusionList);
-        const colorRange = FactoryHelper.newColorrange(maxValue);
-        const mapDataSource = FactoryHelper.newMapDataSource(dataList, colorRange);
-
-        this.store.mapDatasource$.next(mapDataSource);
-      });
+      this.store.mapDatasource$.next(mapDataSource);
+    });
   }
 
   public triggerByTypeInfo(): Subscription {
     return this.store.typeInfo$
       .subscribe((typeInfo) => {
         const lastFusionList = this.store.fusionList$.getValue();
-        console.log('TYPE INFO has been changed');
-
+        // console.log('TYPE INFO has been changed');
         const maxValue = this.store.maxvalueMap$.getValue().get(typeInfo);
 
         const dataList = MapperHelper.toDateList(typeInfo, lastFusionList);

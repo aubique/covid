@@ -16,17 +16,17 @@ import { MapComponent } from './map/map.component';
 FusionChartsModule.fcRoot(FusionCharts, FranceMap, FranceDepartment, FusionMaps, FusionTheme);
 
 @NgModule({
-    declarations: [
-        ContentComponent,
-        MapComponent,
-    ],
-    imports: [
-        CommonModule,
-        SharedModule,
-    ],
-    exports: [
-        ContentComponent,//TODO should be removed
-    ],
+  declarations: [
+    ContentComponent,
+    MapComponent,
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+  ],
+  exports: [
+    ContentComponent,
+  ],
 })
 export class ContentModule {
 }

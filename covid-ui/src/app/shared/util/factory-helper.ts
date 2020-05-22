@@ -13,31 +13,47 @@ import { BehaviorSubject } from 'rxjs';
 
 export class FactoryHelper {
 
-  public static newCsvInfo(csvFields: string[]): CsvDto {
-
+  public static newCsvDto(department: string, gender: number,
+                          date: Date, hosp: number, rea: number,
+                          rad: number, dc: number): CsvDto {
     return {
-      department: csvFields[0].replace(/^"|"$/g, ''),
-      gender: Number(csvFields[1]),
-      date: new Date(Date.parse(csvFields[2])),
-      hosp: Number(csvFields[3]),
-      rea: Number(csvFields[4]),
-      rad: Number(csvFields[5]),
-      dc: Number(csvFields[6]),
+      department: department,
+      gender: gender,
+      date: date,
+      hosp: hosp,
+      rea: rea,
+      rad: rad,
+      dc: dc,
     } as CsvDto;
   }
 
-  public static newDataDefault(
-    departmentId: string, value: number): CasesData {
-
+  public static newDataDefault(departmentId: string,
+                               value: number): CasesData {
     return {
       id: DepartmentCode[departmentId],
       value: value,
     } as CasesData;
   }
 
-  public static newDateInfo(
-    hospObj: CasesData, reaObj: CasesData, radObj: CasesData,
-    dcObj: CasesData, label?: string): FusionDto {
+  // public static newDateInfo(
+  //   hospObj: CasesData, reaObj: CasesData, radObj: CasesData,
+  //   dcObj: CasesData, label?: string): FusionDto {
+  //
+  //   return {
+  //     hosp: hospObj,
+  //     rea: reaObj,
+  //     rad: radObj,
+  //     dc: dcObj,
+  //     label: label,
+  //   } as FusionDto;
+  // }
+
+  public static newDateInfo(id: string, hosp: number, rea: number,
+                            rad: number, dc: number, label?: string): FusionDto {
+    const hospObj = FactoryHelper.newDataDefault(id, hosp);
+    const reaObj = FactoryHelper.newDataDefault(id, rea);
+    const radObj = FactoryHelper.newDataDefault(id, rad);
+    const dcObj = FactoryHelper.newDataDefault(id, dc);
 
     return {
       hosp: hospObj,
@@ -48,8 +64,8 @@ export class FactoryHelper {
     } as FusionDto;
   }
 
-  public static newMapDataSource(
-    dataList: Array<CasesData>, colorRange: ColorrangeFusion): DatasourceFusion {
+  public static newMapDataSource(dataList: Array<CasesData>,
+                                 colorRange: ColorrangeFusion): DatasourceFusion {
     return {
       chart: ChartMock,
       colorrange: colorRange,

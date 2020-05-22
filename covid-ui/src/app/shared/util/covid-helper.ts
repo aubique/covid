@@ -1,10 +1,8 @@
 export class CovidHelper {
 
   public static readonly FIELD_SEPARATOR = ';';
-
-  public static isOverallInformation(lineFields: string[]): boolean {
-    return (this.isGenderZero(lineFields[1]));
-  }
+  public static readonly RHONE = {code: '69', multiplier: 0.33};
+  public static readonly LYON = {code: '69M', multiplier: 0.66};
 
   public static isGenderZero(gender: string): boolean {
     return (gender == '0');
