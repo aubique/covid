@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
 import { FacadeService } from '@app/services/facade.service';
+import { StoreService } from '@app/services/store.service';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faFileAlt } from '@fortawesome/free-regular-svg-icons';
 
 import { faDizzy, faGlobeEurope, faHospitalUser, faProcedures, faSmile } from '@fortawesome/free-solid-svg-icons';
-import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -21,7 +21,8 @@ export class HeaderComponent implements OnInit {
   readonly RAD_BTN = {text: 'Recovered', enum: TypeInfoEnum.Rad};
   readonly DC_BTN = {text: 'Deaths', enum: TypeInfoEnum.Dc};
 
-  typeInfoState: BehaviorSubject<TypeInfoEnum>;
+  typeInfoState: any;
+  typeInfo: TypeInfoEnum;
 
   faGlobalEurope = faGlobeEurope;
   faHospitalUser = faHospitalUser;
@@ -31,14 +32,31 @@ export class HeaderComponent implements OnInit {
   faGithub = faGithub;
   faFileAlt = faFileAlt;
 
-  constructor(private facade: FacadeService) {
+  constructor(
+    private facade: FacadeService,
+    private store: StoreService,
+  ) {
   }
 
   ngOnInit(): void {
-    this.typeInfoState = this.facade.typeInfo$;
+    console.log(this.store.typeInfo$.getValue());
+    this.typeInfoState = this.store.typeInfo$;
+    this.store.typeInfo$.subscribe(t => {
+      this.typeInfo = t;
+      console.log(this.typeInfo);
+    });
+
+    // this.typeInfoState = this.facade.typeInfo$.pipe(
+    //   filter(t => t === TypeInfoEnum.Hosp),
+    //   tap(t => {
+    //     this.typeInfo = t;
+    //     console.log('Trigger onInit HEADER');
+    //     console.log(this.typeInfo);
+    //   }),
+    // );
   }
 
   onClick(type: TypeInfoEnum): void {
-    this.facade.saveTypeToLocalStorage(type);
+    this.facade.switchMap(type);
   }
 }

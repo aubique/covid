@@ -66,7 +66,15 @@ export class FacadeService implements OnInit {
     this.loader.loadTypeInfo();
   }
 
+  public forwardResolve(typeInfoStr: string): TypeInfoEnum {
+    return this.loader.forwardResolve(typeInfoStr);
+  }
+
   public saveTypeToLocalStorage(typeInfoEnum: TypeInfoEnum): void {
     this.loader.saveTypeInfo(typeInfoEnum);
+  }
+
+  public switchMap(typeInfo: TypeInfoEnum): void {
+    this.loader.navigateTo(typeInfo);
   }
 }

@@ -8,7 +8,6 @@ import { DepartmentCode } from '@shared/constants/code/department-code';
 import { ChartMock } from '@shared/constants/data/chart.mock';
 import { ColorCodeMock } from '@shared/constants/data/color-code.mock';
 import { MaxvalueListMock } from '@shared/constants/data/maxvalue-list.mock';
-import { BehaviorSubject } from 'rxjs';
 
 
 export class FactoryHelper {
@@ -73,18 +72,18 @@ export class FactoryHelper {
     } as DatasourceFusion;
   }
 
-  public static newTypeSubject(typeInfoStr: string): BehaviorSubject<TypeInfoEnum> {
+  public static newTypeInfoEnum(typeInfoStr: string): TypeInfoEnum {
     switch (typeInfoStr) {
       case TypeInfoEnum.Hosp.toString():
-        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Hosp);
+        return TypeInfoEnum.Hosp;
       case TypeInfoEnum.Rea.toString():
-        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Rea);
+        return TypeInfoEnum.Rea;
       case TypeInfoEnum.Rad.toString():
-        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Rad);
+        return TypeInfoEnum.Rad;
       case TypeInfoEnum.Dc.toString():
-        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Dc);
+        return TypeInfoEnum.Dc;
       default:
-        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Hosp);
+        return TypeInfoEnum.Default;
     }
   }
 

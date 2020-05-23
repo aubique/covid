@@ -19,7 +19,7 @@ export class StoreService implements OnInit {
   public csvList$ = new BehaviorSubject<Array<CsvDto>>(null);
   public fusionList$ = new BehaviorSubject<Array<FusionDto>>(FusionListMock);
   public date$ = new BehaviorSubject<Date>(new Date());
-  public typeInfo$: BehaviorSubject<TypeInfoEnum>;
+  public typeInfo$ = new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Default);//TODO watch it
   public maxvalueMap$ = new BehaviorSubject<Map<TypeInfoEnum, number>>(FactoryHelper.newMaxvalueMap());
 
   constructor() {

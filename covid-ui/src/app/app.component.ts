@@ -16,6 +16,6 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.facade.initTypeFromLocalStorage();
+    // this.facade.initTypeFromLocalStorage();
   }
 }

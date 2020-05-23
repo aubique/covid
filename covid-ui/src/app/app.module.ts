@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CoreModule } from '@app/core.module';
 import { ContentModule } from '@modules/content/content.module';
 import { SharedModule } from '@shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -16,14 +16,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     // Angular
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     // Page modules
     ContentModule,
     // Core & Shared
     CoreModule,
     SharedModule,
-    FontAwesomeModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent],

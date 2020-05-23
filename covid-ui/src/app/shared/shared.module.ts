@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -22,7 +21,6 @@ import { FusionChartsModule } from 'angular-fusioncharts';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     // 3rd Party
     NgbModule,
     FontAwesomeModule,
@@ -32,7 +30,6 @@ import { FusionChartsModule } from 'angular-fusioncharts';
     // Angular
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     // 3rd Party libs
     NgbModule,
     FontAwesomeModule,

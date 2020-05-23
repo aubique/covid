@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
 import { StoreService } from '@app/services/store.service';
@@ -16,7 +17,16 @@ export class LoaderService {
 
   private static readonly STORAGE_TYPE_INFO = 'type-info';
 
-  constructor(private store: StoreService) {
+  constructor(
+    private store: StoreService,
+    private router: Router,
+  ) {
+  }
+
+  public navigateTo(typeInfo: TypeInfoEnum): void {
+    const url = typeInfo.toString();
+
+    this.router.navigate([url]);
   }
 
   public triggerByFusionList(): Subscription {
@@ -39,7 +49,7 @@ export class LoaderService {
     return this.store.typeInfo$
       .subscribe((typeInfo) => {
         const lastFusionList = this.store.fusionList$.getValue();
-        // console.log('TYPE INFO has been changed');
+        console.log('TYPE INFO has been changed');
         const maxValue = this.store.maxvalueMap$.getValue().get(typeInfo);
 
         const dataList = MapperHelper.toDateList(typeInfo, lastFusionList);
@@ -50,15 +60,32 @@ export class LoaderService {
       });
   }
 
-  public saveTypeInfo(typeInfoEnum: TypeInfoEnum): void {
-    localStorage.setItem(LoaderService.STORAGE_TYPE_INFO, typeInfoEnum.toString());
-    this.store.typeInfo$.next(typeInfoEnum);
+  public loadTypeInfo(): void {
+    let typeInfoEnum = FactoryHelper.newTypeInfoEnum(TypeInfoEnum.Hosp.toString());
+    const typeInfoStr = localStorage.getItem(LoaderService.STORAGE_TYPE_INFO);
+    console.log('local storage:', typeInfoStr);
+
+    if (typeInfoStr)
+      typeInfoEnum = FactoryHelper.newTypeInfoEnum(typeInfoStr);
+
+    if (typeInfoEnum !== TypeInfoEnum.Default) {
+      // this.store.typeInfo$ = new BehaviorSubject<TypeInfoEnum>(typeInfoEnum);
+      this.store.typeInfo$.next(typeInfoEnum);
+      console.log('Trigger: new TypeInfoEnum BH-Subject');
+      console.log(typeInfoEnum);
+    }
+
+    this.navigateTo(this.store.typeInfo$.getValue());
   }
 
-  public loadTypeInfo(): void {
-    let typeInfoStr: string;
+  public saveTypeInfo(typeInfoEnum: TypeInfoEnum): void {
+    localStorage.setItem(LoaderService.STORAGE_TYPE_INFO, typeInfoEnum.toString());
+  }
 
-    typeInfoStr = localStorage.getItem(LoaderService.STORAGE_TYPE_INFO);
-    this.store.typeInfo$ = FactoryHelper.newTypeSubject(typeInfoStr);
+  public forwardResolve(typeInfoStr: string): TypeInfoEnum {
+    const typeInfoEnum = FactoryHelper.newTypeInfoEnum(typeInfoStr);
+
+    this.store.typeInfo$.next(typeInfoEnum);
+    return typeInfoEnum;
   }
 }
