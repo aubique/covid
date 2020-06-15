@@ -8,6 +8,7 @@ import { CsvPageComponent } from '@shared/components/csv-page/csv-page.component
 import { FrancePageComponent } from '@shared/components/france-page/france-page.component';
 import { PrettyjsonPipe } from '@shared/pipe/prettyjson.pipe';
 import { FusionChartsModule } from 'angular-fusioncharts';
+import { RadioComponent } from './components/radio/radio.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { FusionChartsModule } from 'angular-fusioncharts';
     FrancePageComponent,
     CsvPageComponent,
     PrettyjsonPipe,
+    RadioComponent,
   ],
   imports: [
     // Angular
@@ -38,6 +40,7 @@ import { FusionChartsModule } from 'angular-fusioncharts';
     FrancePageComponent,
     CsvPageComponent,
     PrettyjsonPipe,
+    RadioComponent,
   ],
 })
 export class SharedModule {
