@@ -1,0 +1,15 @@
+<div ngbDropdown class="d-inline-block">
+
+  <button class="btn dark-gray" id="dropdownLang" ngbDropdownToggle>
+    <fa-icon [icon]="faLanguage" size="lg"></fa-icon>
+  </button>
+  <div ngbDropdownMenu aria-labelledby="dropdownLang">
+
+    <button ngbDropdownItem
+            *ngFor="let lang of facade.languageList"
+            [value]="lang"
+            (click)="switchLang(lang)">{{ 'Language.' + lang.name | translate}}
+    </button>
+
+  </div>
+</div>

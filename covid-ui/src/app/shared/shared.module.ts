@@ -4,11 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
 import { CsvPageComponent } from '@shared/components/csv-page/csv-page.component';
 import { FrancePageComponent } from '@shared/components/france-page/france-page.component';
 import { PrettyjsonPipe } from '@shared/pipe/prettyjson.pipe';
 import { FusionChartsModule } from 'angular-fusioncharts';
 import { RadioComponent } from './components/radio/radio.component';
+import { LocaleComponent } from './components/locale/locale.component';
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import { RadioComponent } from './components/radio/radio.component';
     CsvPageComponent,
     PrettyjsonPipe,
     RadioComponent,
+    LocaleComponent,
   ],
   imports: [
     // Angular
@@ -27,6 +30,7 @@ import { RadioComponent } from './components/radio/radio.component';
     NgbModule,
     FontAwesomeModule,
     FusionChartsModule,
+    TranslateModule,
   ],
   exports: [
     // Angular
@@ -36,11 +40,13 @@ import { RadioComponent } from './components/radio/radio.component';
     NgbModule,
     FontAwesomeModule,
     FusionChartsModule,
+    TranslateModule,
     // Test Pages and Pipe
     FrancePageComponent,
     CsvPageComponent,
     PrettyjsonPipe,
     RadioComponent,
+    LocaleComponent,
   ],
 })
 export class SharedModule {

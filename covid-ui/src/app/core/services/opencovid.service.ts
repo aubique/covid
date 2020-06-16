@@ -77,7 +77,7 @@ export class OpencovidService {
 
   private handleLastTime(lastLine: string): string {
     const dateObj = CovidHelper.extractDate(lastLine);
-    this.store.date$.next(dateObj);
+    this.store.lastDate$.next(dateObj);
 
     return CovidHelper.convertDate(dateObj);
   }

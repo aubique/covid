@@ -6,6 +6,7 @@ import { FusionDto } from '@app/models/fusion-dto';
 import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
 import { DatasourceMock } from '@shared/constants/data/datasource.mock';
 import { FusionListMock } from '@shared/constants/data/fusion-list.mock';
+import { LanguageListMock } from '@shared/constants/data/language-list.mock';
 import { FactoryHelper } from '@shared/util/factory-helper';
 import { BehaviorSubject } from 'rxjs';
 
@@ -18,7 +19,7 @@ export class StoreService implements OnInit {
   public mapDatasource$ = new BehaviorSubject<DatasourceFusion>(DatasourceMock);
   public csvList$ = new BehaviorSubject<Array<CsvDto>>(null);
   public fusionList$ = new BehaviorSubject<Array<FusionDto>>(FusionListMock);
-  public date$ = new BehaviorSubject<Date>(new Date());
+  public lastDate$ = new BehaviorSubject<Date>(new Date());
   public typeInfo$ = new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Default);
   public maxvalueMap$ = new BehaviorSubject<Map<TypeInfoEnum, number>>(FactoryHelper.newMaxvalueMap());
 
