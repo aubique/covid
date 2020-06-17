@@ -1,6 +1,6 @@
 import { Language } from '@app/models/misc/language';
 
-export const LanguageListMock = [
+export const LanguagesDefault = [
   {
     name: 'English',
     lang: 'en',
@@ -8,9 +8,5 @@ export const LanguageListMock = [
   {
     name: 'French',
     lang: 'fr',
-  },
-  {
-    name: 'Russian',
-    lang: 'ru',
   },
 ] as Array<Language>;

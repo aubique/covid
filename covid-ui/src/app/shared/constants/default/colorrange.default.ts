@@ -1,6 +1,6 @@
 import { ColorrangeFusion } from '@app/models/fusion/colorrange-fusion';
 
-export const ColorrangeMock = {
+export const ColorrangeDefault = {
   minvalue: 0,
   startlabel: 'Low',
   endlabel: 'High',

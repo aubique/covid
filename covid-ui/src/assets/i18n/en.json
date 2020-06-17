@@ -3,5 +3,10 @@
     "English": "English",
     "French": "French",
     "Russian": "Russian"
+  },
+  "Fusion": {
+    "Low": "L",
+    "High": "H",
+    "Caption": "France Coronavirus Map and Case Count for {{date}}"
   }
 }

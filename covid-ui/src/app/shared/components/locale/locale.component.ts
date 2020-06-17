@@ -20,11 +20,9 @@ export class LocaleComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.facade.loadTranslate();
   }
 
   ngOnDestroy(): void {
-    this.facade.unloadTranslate();
   }
 
   switchLang(language: Language): void {

@@ -3,5 +3,10 @@
     "English": "Anglais",
     "French": "Français",
     "Russian": "Russe"
+  },
+  "Fusion": {
+    "Low": "Bas",
+    "High": "Haut",
+    "Caption": "Carte du Coronavirus et nombre de cas pour {{date}}"
   }
 }

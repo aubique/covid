@@ -6,8 +6,8 @@ import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
 import { FusionDto } from '@app/models/fusion-dto';
 import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
 import { Language } from '@app/models/misc/language';
-import { LangService } from '@app/services/lang.service';
 import { LoaderService } from '@app/services/loader.service';
+import { LocaleService } from '@app/services/locale.service';
 import { OpencovidService } from '@app/services/opencovid.service';
 import { StoreService } from '@app/services/store.service';
 
@@ -22,13 +22,14 @@ export class FacadeService implements OnInit {
   private fusionSubscription: Subscription;
   private typeSubscription: Subscription;
   private translateSubscriptions: Array<Subscription>;
+  private loaderSubscriptions: Array<Subscription>;
 
   constructor(
     private store: StoreService,
     private api: ApiService,
     private opencovid: OpencovidService,
     private loader: LoaderService,
-    private lang: LangService,
+    private locale: LocaleService,
   ) {
   }
 
@@ -48,7 +49,7 @@ export class FacadeService implements OnInit {
   }
 
   get languageList(): Array<Language> {
-    return this.lang.languagePack;
+    return this.locale.languagePack;
   }
 
   get typeInfo$(): BehaviorSubject<TypeInfoEnum> {
@@ -61,13 +62,11 @@ export class FacadeService implements OnInit {
   }
 
   public loadMap(): void {
-    this.fusionSubscription = this.loader.triggerByFusionList();
-    this.typeSubscription = this.loader.triggerByTypeInfo();
+    this.loaderSubscriptions = this.loader.subscribeFusionCharts();
   }
 
   public unloadMap(): void {
-    this.fusionSubscription.unsubscribe();
-    this.typeSubscription.unsubscribe();
+    this.loaderSubscriptions.forEach(s => s.unsubscribe());
   }
 
   public initTypeFromLocalStorage(): void {
@@ -87,11 +86,11 @@ export class FacadeService implements OnInit {
   }
 
   public setLanguage(): void {
-    this.lang.loadBrowserLanguage();
+    this.locale.loadBrowserLanguage();
   }
 
   public switchLanguage(language: Language): void {
-    this.lang.switchLang(language.lang);
+    this.locale.switchLang(language);
   }
 
   public unloadTranslate(): void {
@@ -99,6 +98,6 @@ export class FacadeService implements OnInit {
   }
 
   public loadTranslate(): void {
-    this.translateSubscriptions = this.lang.subscribeOnTranslate();
+    this.translateSubscriptions = this.locale.subscribeTranslationLoading();
   }
 }

@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
+import { FusionDto } from '@app/models/fusion-dto';
+import { LocaleService } from '@app/services/locale.service';
 import { StoreService } from '@app/services/store.service';
 import { FactoryHelper } from '@shared/util/factory-helper';
 import { MapperHelper } from '@shared/util/mapper-helper';
-
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -20,6 +21,7 @@ export class LoaderService {
   constructor(
     private store: StoreService,
     private router: Router,
+    private locale: LocaleService,
   ) {
   }
 
@@ -29,35 +31,52 @@ export class LoaderService {
     this.router.navigate([url]);
   }
 
-  public triggerByFusionList(): Subscription {
+  private triggerByFusionList(): Subscription {
     return this.store.fusionList$.pipe(
       filter(list => list !== null),
     ).subscribe((fusionList) => {
       const lastTypeInfo = this.store.typeInfo$.getValue();
+      const lastLanguage = this.store.language$.getValue();
       // console.log('FUSION LIST has been changed');
-      const maxValue = this.store.maxvalueMap$.getValue().get(lastTypeInfo);
 
-      const dataList = MapperHelper.toDateList(lastTypeInfo, fusionList);
-      const colorRange = FactoryHelper.newColorrange(maxValue);
-      const mapDataSource = FactoryHelper.newMapDataSource(dataList, colorRange);
-
-      this.store.mapDatasource$.next(mapDataSource);
+      this.pushMapDatasource(lastTypeInfo, fusionList);
     });
   }
 
-  public triggerByTypeInfo(): Subscription {
+  private triggerByTypeInfo(): Subscription {
     return this.store.typeInfo$
       .subscribe((typeInfo) => {
         const lastFusionList = this.store.fusionList$.getValue();
-        console.log('TYPE INFO has been changed');
-        const maxValue = this.store.maxvalueMap$.getValue().get(typeInfo);
+        const lastLanguage = this.store.language$.getValue();
+        // console.log('TYPE INFO has been changed');
 
-        const dataList = MapperHelper.toDateList(typeInfo, lastFusionList);
-        const colorRange = FactoryHelper.newColorrange(maxValue);
-        const mapDataSource = FactoryHelper.newMapDataSource(dataList, colorRange);
-
-        this.store.mapDatasource$.next(mapDataSource);
+        this.pushMapDatasource(typeInfo, lastFusionList);
       });
+  }
+
+  private triggerByLanguage(): Subscription {
+    return this.store.language$.pipe(
+      filter(l => l !== null),
+    ).subscribe((language) => {
+      const lastFusionList = this.store.fusionList$.getValue();
+      const lastTypeInfo = this.store.typeInfo$.getValue();
+      // console.log('LANGUAGE has been changed');
+
+      this.pushMapDatasource(lastTypeInfo, lastFusionList);
+    });
+  }
+
+  private pushMapDatasource(typeInfo: TypeInfoEnum,
+                            fusionList: Array<FusionDto>): void {
+    const maxValue = this.store.maxvalueMap$.getValue().get(typeInfo);
+
+    const colorRange = this.locale.proceedColorrange(maxValue);
+    const chartCaption = this.locale.proceedChart('28\/06\/2020');
+    const dataList = MapperHelper.toDateList(typeInfo, fusionList);
+
+    const mapDataSource = FactoryHelper.newMapDataSource(dataList, colorRange, chartCaption);
+
+    this.store.mapDatasource$.next(mapDataSource);
   }
 
   public loadTypeInfo(): void {
@@ -71,6 +90,7 @@ export class LoaderService {
     if (typeInfoEnum !== TypeInfoEnum.Default) {
       // this.store.typeInfo$ = new BehaviorSubject<TypeInfoEnum>(typeInfoEnum);
       this.store.typeInfo$.next(typeInfoEnum);
+
       console.log('Trigger: new TypeInfoEnum BH-Subject');
       console.log(typeInfoEnum);
     }
@@ -87,5 +107,15 @@ export class LoaderService {
 
     this.store.typeInfo$.next(typeInfoEnum);
     return typeInfoEnum;
+  }
+
+  public subscribeFusionCharts(): Array<Subscription> {
+    const subscriptions = new Array<Subscription>();
+
+    subscriptions.push(this.triggerByTypeInfo());
+    subscriptions.push(this.triggerByFusionList());
+    subscriptions.push(this.triggerByLanguage());
+
+    return subscriptions;
   }
 }

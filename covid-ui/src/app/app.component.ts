@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { FacadeService } from '@app/services/facade.service';
 
@@ -8,7 +8,7 @@ import { FacadeService } from '@app/services/facade.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy{
 
   title = 'covid-ui';
 
@@ -18,5 +18,10 @@ export class AppComponent {
   ngOnInit(): void {
     // this.facade.initTypeFromLocalStorage();
     this.facade.setLanguage();
+    this.facade.loadTranslate();
+  }
+
+  ngOnDestroy(): void {
+    this.facade.unloadTranslate();
   }
 }

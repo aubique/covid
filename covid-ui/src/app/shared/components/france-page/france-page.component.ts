@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
 import { FacadeService } from '@app/services/facade.service';
-import { ChartMock } from '@shared/constants/data/chart.mock';
-import { ColorrangeMock } from '@shared/constants/data/colorrange.mock';
+import { ChartDefault } from '@shared/constants/default/chart.default';
+import { ColorrangeDefault } from '@shared/constants/default/colorrange.default';
 import { DatalistMock } from '@shared/constants/data/datalist.mock';
 
 
@@ -18,8 +18,8 @@ export class FrancePageComponent implements OnInit {
 
   constructor(private facade: FacadeService) {
     this.dataSource = {
-      chart: ChartMock,
-      colorrange: ColorrangeMock,
+      chart: ChartDefault,
+      colorrange: ColorrangeDefault,
       data: DatalistMock,
     } as DatasourceFusion;
   }
