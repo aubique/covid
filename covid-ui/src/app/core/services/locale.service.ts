@@ -46,6 +46,7 @@ export class LocaleService {
     this.translate.setDefaultLang(defaultLanguage.lang);
     this.store.language$.next(defaultLanguage);
 
+    console.log('DefaultLang:', this.translate.getDefaultLang());
     console.log(langPack.indexOf(browserLang));//TODO remove stdout
   }
 

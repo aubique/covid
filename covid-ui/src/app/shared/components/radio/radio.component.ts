@@ -13,10 +13,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class RadioComponent implements OnInit {
 
-  readonly HOSP_BTN = {text: 'Hospitalized', enum: TypeInfoEnum.Hosp};
-  readonly REA_BTN = {text: 'Intensive Care', enum: TypeInfoEnum.Rea};
-  readonly RAD_BTN = {text: 'Recovered', enum: TypeInfoEnum.Rad};
-  readonly DC_BTN = {text: 'Deaths', enum: TypeInfoEnum.Dc};
+  readonly HOSP_BTN = {text: 'Header.Hosp', enum: TypeInfoEnum.Hosp};
+  readonly REA_BTN = {text: 'Header.Rea', enum: TypeInfoEnum.Rea};
+  readonly RAD_BTN = {text: 'Header.Rad', enum: TypeInfoEnum.Rad};
+  readonly DC_BTN = {text: 'Header.Dc', enum: TypeInfoEnum.Dc};
 
   typeInfoState: BehaviorSubject<TypeInfoEnum>;
 

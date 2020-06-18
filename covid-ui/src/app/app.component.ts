@@ -17,8 +17,8 @@ export class AppComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     // this.facade.initTypeFromLocalStorage();
-    this.facade.setLanguage();
     this.facade.loadTranslate();
+    this.facade.setLanguage();
   }
 
   ngOnDestroy(): void {
