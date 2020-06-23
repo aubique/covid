@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
 import { FusionDto } from '@app/models/fusion-dto';
+import { Language } from '@app/models/misc/language';
 import { LocaleService } from '@app/services/locale.service';
 import { StoreService } from '@app/services/store.service';
 import { FactoryHelper } from '@shared/util/factory-helper';
@@ -39,7 +40,7 @@ export class LoaderService {
       const lastLanguage = this.store.language$.getValue();
       // console.log('FUSION LIST has been changed');
 
-      this.pushMapDatasource(lastTypeInfo, fusionList);
+      this.pushMapDatasource(lastTypeInfo, fusionList, lastLanguage);
     });
   }
 
@@ -50,7 +51,7 @@ export class LoaderService {
         const lastLanguage = this.store.language$.getValue();
         // console.log('TYPE INFO has been changed');
 
-        this.pushMapDatasource(typeInfo, lastFusionList);
+        this.pushMapDatasource(typeInfo, lastFusionList, lastLanguage);
       });
   }
 
@@ -62,16 +63,20 @@ export class LoaderService {
       const lastTypeInfo = this.store.typeInfo$.getValue();
       // console.log('LANGUAGE has been changed');
 
-      this.pushMapDatasource(lastTypeInfo, lastFusionList);
+      this.pushMapDatasource(lastTypeInfo, lastFusionList, language);
     });
   }
 
-  private pushMapDatasource(typeInfo: TypeInfoEnum,
-                            fusionList: Array<FusionDto>): void {
+  private pushMapDatasource(
+    typeInfo: TypeInfoEnum,
+    fusionList: Array<FusionDto>,
+    language: Language,
+  ): void {
     const maxValue = this.store.maxvalueMap$.getValue().get(typeInfo);
+    const date = this.store.lastDate$.getValue();
 
     const colorRange = this.locale.proceedColorrange(maxValue);
-    const chartCaption = this.locale.proceedChart('28\/06\/2020');
+    const chartCaption = this.locale.proceedChart(date, language);
     const dataList = MapperHelper.toDateList(typeInfo, fusionList);
 
     const mapDataSource = FactoryHelper.newMapDataSource(dataList, colorRange, chartCaption);

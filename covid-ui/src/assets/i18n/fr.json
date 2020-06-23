@@ -7,7 +7,7 @@
   "Fusion": {
     "Low": "Bas",
     "High": "Haut",
-    "Caption": "Carte du Coronavirus et nombre de cas pour {{date}}"
+    "Caption": "Carte du Coronavirus et nombre de cas, le {{date}}"
   },
   "Header": {
     "Brand": "Covid-19 Map",
@@ -18,7 +18,7 @@
   },
   "Footer": {
     "Angular": "Application est développée avec",
-    "Bootstrap": " et contruite à l'aide de",
+    "Bootstrap": "et contruite à l'aide de",
     "License": "Code sous licence selon les conditions de",
     "MIT": "licence du MIT"
   }

@@ -1,4 +1,6 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import localeRu from '@angular/common/locales/ru';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -9,9 +11,12 @@ import { CsvPageComponent } from '@shared/components/csv-page/csv-page.component
 import { FrancePageComponent } from '@shared/components/france-page/france-page.component';
 import { PrettyjsonPipe } from '@shared/pipe/prettyjson.pipe';
 import { FusionChartsModule } from 'angular-fusioncharts';
-import { RadioComponent } from './components/radio/radio.component';
 import { LocaleComponent } from './components/locale/locale.component';
+import { RadioComponent } from './components/radio/radio.component';
 
+
+registerLocaleData(localeFr);
+registerLocaleData(localeRu);
 
 @NgModule({
   declarations: [
