@@ -13,6 +13,7 @@ import { PrettyjsonPipe } from '@shared/pipe/prettyjson.pipe';
 import { FusionChartsModule } from 'angular-fusioncharts';
 import { LocaleComponent } from './components/locale/locale.component';
 import { RadioComponent } from './components/radio/radio.component';
+import { BrandComponent } from './components/brand/brand.component';
 
 
 registerLocaleData(localeFr);
@@ -25,6 +26,7 @@ registerLocaleData(localeRu);
     PrettyjsonPipe,
     RadioComponent,
     LocaleComponent,
+    BrandComponent,
   ],
   imports: [
     // Angular
@@ -37,22 +39,23 @@ registerLocaleData(localeRu);
     FusionChartsModule,
     TranslateModule,
   ],
-  exports: [
-    // Angular
-    FormsModule,
-    ReactiveFormsModule,
-    // 3rd Party libs
-    NgbModule,
-    FontAwesomeModule,
-    FusionChartsModule,
-    TranslateModule,
-    // Test Pages and Pipe
-    FrancePageComponent,
-    CsvPageComponent,
-    PrettyjsonPipe,
-    RadioComponent,
-    LocaleComponent,
-  ],
+    exports: [
+        // Angular
+        FormsModule,
+        ReactiveFormsModule,
+        // 3rd Party libs
+        NgbModule,
+        FontAwesomeModule,
+        FusionChartsModule,
+        TranslateModule,
+        // Test Pages and Pipe
+        FrancePageComponent,
+        CsvPageComponent,
+        PrettyjsonPipe,
+        RadioComponent,
+        LocaleComponent,
+        BrandComponent,
+    ],
 })
 export class SharedModule {
 }

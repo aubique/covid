@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faFileAlt } from '@fortawesome/free-regular-svg-icons';
-import { faGlobeEurope } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -12,7 +11,6 @@ import { faGlobeEurope } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
 
-  faGlobalEurope = faGlobeEurope;
   faGithub = faGithub;
   faFileAlt = faFileAlt;
 
