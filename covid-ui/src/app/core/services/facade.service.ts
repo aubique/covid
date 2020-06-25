@@ -10,7 +10,6 @@ import { LoaderService } from '@app/services/loader.service';
 import { LocaleService } from '@app/services/locale.service';
 import { OpencovidService } from '@app/services/opencovid.service';
 import { StoreService } from '@app/services/store.service';
-
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 

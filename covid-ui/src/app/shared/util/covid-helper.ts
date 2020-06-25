@@ -1,3 +1,6 @@
+import { strptime } from 'strtime';
+
+
 export class CovidHelper {
 
   public static readonly FIELD_SEPARATOR = ';';
@@ -16,14 +19,29 @@ export class CovidHelper {
 
   public static extractDate(line: string): Date {
     const date = line.split(CovidHelper.FIELD_SEPARATOR)[2];
-    return new Date(Date.parse(date));
+    // console.log(date);
+    // console.log(new Date(strptime(date, '%d/%m/%Y')));
+    return this.parseDate(date);
   }
 
   public static convertDate(dateObj: Date): string {
+    // console.log(dateObj);
+    // console.log(new Date(dateObj).toISOString().slice(0, 10));
     return new Date(dateObj).toISOString().slice(0, 10);
   }
 
-  public static getStandardDate(dateTxt: string): string {
-    return this.convertDate(new Date(Date.parse(dateTxt)));
+  public static getStandardDate(dateStr: string): string {
+    // return this.convertDate(new Date(Date.parse(dateStr)));
+    return this.convertDate(this.parseDate(dateStr));
+  }
+
+  public static parseDate(dateStr: string): Date {
+    let dateObj: Date;
+    try {
+      dateObj = new Date(strptime(dateStr, '%d/%m/%Y'));
+    } catch (e) {
+      dateObj = new Date((Date.parse(dateStr)));
+    }
+    return dateObj;
   }
 }

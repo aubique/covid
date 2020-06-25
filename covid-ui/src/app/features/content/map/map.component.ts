@@ -13,7 +13,6 @@ import { BehaviorSubject } from 'rxjs';
 export class MapComponent implements OnInit, OnDestroy {
 
   mapDataState: BehaviorSubject<DatasourceFusion>;
-  title = 'France departments';
 
   constructor(private facade: FacadeService) {
   }

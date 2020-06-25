@@ -60,9 +60,9 @@ export class OpencovidService {
     for (let i = lastLineIndex; i > 0; i--) {
       const lineFields: string[] = lines[i].split(CovidHelper.FIELD_SEPARATOR);
       const gender = lineFields[1];
-      const currentDate = lineFields[2];
+      const currentDateObj = CovidHelper.parseDate(lineFields[2]);
 
-      if (lastDate == CovidHelper.getStandardDate(currentDate))
+      if (lastDate == CovidHelper.convertDate(currentDateObj))
         if (CovidHelper.isGenderZero(gender)) {
           const csv = OpencovidService.pushCsvDto(csvList, lineFields);
           OpencovidService.updateMaxValues(csv, maxValues);
@@ -83,7 +83,9 @@ export class OpencovidService {
   }
 
   private static updateMaxValues(
-    csvObj: CsvDto, maxvalues: Map<TypeInfoEnum, number>): void {
+    csvObj: CsvDto,
+    maxvalues: Map<TypeInfoEnum, number>,
+  ): void {
 
     if (csvObj.hosp > maxvalues.get(TypeInfoEnum.Hosp))
       maxvalues.set(TypeInfoEnum.Hosp, csvObj.hosp);
@@ -106,8 +108,10 @@ export class OpencovidService {
     ).subscribe(list => this.store.fusionList$.next(list));
   }
 
-  private static pushCsvDto(infoDtoList: Array<CsvDto>,
-                            lineFields: Array<string>): CsvDto {
+  private static pushCsvDto(
+    infoDtoList: Array<CsvDto>,
+    lineFields: Array<string>,
+  ): CsvDto {
     let infoDto = MapperHelper.toCsvDto(lineFields);
     // Add Lyon Metropolitan and modify Rhone department
     if (infoDto.department === CovidHelper.RHONE.code) {
