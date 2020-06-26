@@ -1,6 +1,7 @@
 export enum TypeInfoEnum {
-  Hosp = 'HOSP',
-  Rea = 'REA',
-  Rad = 'RAD',
-  Dc = 'DC',
+  Default = 'default',
+  Hosp = 'hosp',
+  Rea = 'rea',
+  Rad = 'rad',
+  Dc = 'dc',
 }

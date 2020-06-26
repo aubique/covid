@@ -1,19 +1,26 @@
 <footer class="footer bg-light">
-  <div class="container-fluid p-2 p-md-4">
+  <div class="container p-2 p-md-4">
 
-    <p class="d-block">
-      Crafted with
+    <p class="d-block"><!--Made with love-->
+      Made with
       <fa-icon [icon]="faHeart" class="red-icon"></fa-icon>
       by <a href="https://github.com/aubique/" rel="noopener" target="_blank">Alexander M.</a>
     </p>
 
-    <p class="d-none d-md-block">
-      The project is built with
-      <a href="https://angular.io/" rel="noopener" target="_blank">Angular 9</a> and
+    <p class="d-none d-md-block"><!--Copyright-->
+
+      {{ 'Footer.Angular' | translate }}
+      <a href="https://angular.io/docs/" rel="noopener" target="_blank">Angular 10</a>
+
+      {{ 'Footer.Bootstrap' | translate }}
       <a href="https://getbootstrap.com/docs/4.5/" rel="noopener" target="_blank">Bootstrap 4</a>.
-      Code licensed under
-      <a href="https://https://raw.githubusercontent.com/aubique/covid/master/LICENSE" rel="noopener"
-         target="_blank">MIT license conditions</a>.
+
+      {{ 'Footer.License' | translate }}
+      <a href="https://raw.githubusercontent.com/aubique/covid/master/LICENSE" rel="noopener"
+         target="_blank">
+        {{ 'Footer.MIT' | translate }}.
+      </a>
+
     </p>
   </div>
 </footer>

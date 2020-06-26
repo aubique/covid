@@ -2,7 +2,7 @@ import { CasesData } from '@app/models/cases-data';
 import { CsvDto } from '@app/models/csv-dto';
 import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
 import { FusionDto } from '@app/models/fusion-dto';
-import { DepartmentCode } from '@shared/constants/code/department-code';
+import { DepartmentCode } from '@shared/constants/code/department.code';
 import { FactoryHelper } from '@shared/util/factory-helper';
 
 

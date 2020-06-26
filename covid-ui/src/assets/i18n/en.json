@@ -1,0 +1,25 @@
+{
+  "Language": {
+    "English": "English",
+    "French": "French",
+    "Russian": "Russian"
+  },
+  "Fusion": {
+    "Low": "Low",
+    "High": "High",
+    "Caption": "France Coronavirus Map and Case Count for {{date}}"
+  },
+  "Header": {
+    "Brand": "Covid-19 Map",
+    "Hosp": "Hospitalized",
+    "Rea": "Intensive Care",
+    "Rad": "Recovered",
+    "Dc": "Deaths"
+  },
+  "Footer": {
+    "Angular": "The project is built with",
+    "Bootstrap": "and",
+    "License": "Code licensed under",
+    "MIT": "MIT license conditions"
+  }
+}

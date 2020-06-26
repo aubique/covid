@@ -1,6 +1,6 @@
 import { ChartFusion } from '@app/models/fusion/chart-fusion';
 
-export const ChartMock = {
+export const ChartDefault = {
   animation: 0,
   showbevel: 0,
   usehovercolor: 1,

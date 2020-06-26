@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ContentRoutingModule } from '@modules/content/content-routing.module';
 
 import { ContentComponent } from '@modules/content/content.component';
 import { SharedModule } from '@shared/shared.module';
@@ -22,11 +23,10 @@ FusionChartsModule.fcRoot(FusionCharts, FranceMap, FranceDepartment, FusionMaps,
   ],
   imports: [
     CommonModule,
+    ContentRoutingModule,
     SharedModule,
   ],
-  exports: [
-    ContentComponent,
-  ],
+  exports: [],
 })
 export class ContentModule {
 }

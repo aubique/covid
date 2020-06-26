@@ -1,0 +1,30 @@
+<div ngbRadioGroup
+     name="radioTypeInfo"
+     class="radio-group btn-group btn-group-toggle"
+     [ngModel]="typeInfoState | async">
+
+  <label ngbButtonLabel class="btn-outline-warning flex-row"><!--Hospital-->
+    <input ngbButton type="radio" (click)="onClick(HOSP_BTN.enum)" [value]="HOSP_BTN.enum">
+    <fa-icon [icon]="faHospitalUser" class="d-inline"></fa-icon>
+    <span class="d-none d-md-inline"> {{HOSP_BTN.text | translate}}</span>
+  </label>
+
+  <label ngbButtonLabel class="btn-outline-danger flex-row"><!--Reanimation-->
+    <input ngbButton type="radio" (click)="onClick(REA_BTN.enum)" [value]="REA_BTN.enum"/>
+    <fa-icon [icon]="faProcedures" class="d-inline"></fa-icon>
+    <span class="d-none d-md-inline"> {{REA_BTN.text | translate}}</span>
+  </label>
+
+  <label ngbButtonLabel class="btn-outline-success flex-row"><!--Recovered-->
+    <input ngbButton type="radio" (click)="onClick(RAD_BTN.enum)" [value]="RAD_BTN.enum">
+    <fa-icon [icon]="faSmile" class="d-inline"></fa-icon>
+    <span class="d-none d-md-inline"> {{RAD_BTN.text | translate}}</span>
+  </label>
+
+  <label ngbButtonLabel class="btn-outline-dark flex-row"><!--Deaths-->
+    <input ngbButton type="radio" (click)="onClick(DC_BTN.enum)" [value]="DC_BTN.enum">
+    <fa-icon [icon]="faDizzy" class="d-inline"></fa-icon>
+    <span class="d-none d-md-inline"> {{DC_BTN.text | translate}}</span>
+  </label>
+
+</div>

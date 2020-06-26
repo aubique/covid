@@ -2,13 +2,13 @@ import { CasesData } from '@app/models/cases-data';
 import { CsvDto } from '@app/models/csv-dto';
 import { TypeInfoEnum } from '@app/models/enums/type-info.enum';
 import { FusionDto } from '@app/models/fusion-dto';
+import { ChartFusion } from '@app/models/fusion/chart-fusion';
 import { ColorrangeFusion } from '@app/models/fusion/colorrange-fusion';
 import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
-import { DepartmentCode } from '@shared/constants/code/department-code';
-import { ChartMock } from '@shared/constants/data/chart.mock';
-import { ColorCodeMock } from '@shared/constants/data/color-code.mock';
+import { DepartmentCode } from '@shared/constants/code/department.code';
+import { ChartDefault } from '@shared/constants/default/chart.default';
+import { ColorCode } from '@shared/constants/code/color.code';
 import { MaxvalueListMock } from '@shared/constants/data/maxvalue-list.mock';
-import { BehaviorSubject } from 'rxjs';
 
 
 export class FactoryHelper {
@@ -64,39 +64,49 @@ export class FactoryHelper {
     } as FusionDto;
   }
 
-  public static newMapDataSource(dataList: Array<CasesData>,
-                                 colorRange: ColorrangeFusion): DatasourceFusion {
+  public static newMapDataSource(
+    dataList: Array<CasesData>,
+    colorRange: ColorrangeFusion,
+    chart: ChartFusion,
+  ): DatasourceFusion {
     return {
-      chart: ChartMock,
+      chart: chart,
       colorrange: colorRange,
       data: dataList,
     } as DatasourceFusion;
   }
 
-  public static newTypeSubject(typeInfoStr: string): BehaviorSubject<TypeInfoEnum> {
+  public static newTypeInfoEnum(typeInfoStr: string): TypeInfoEnum {
     switch (typeInfoStr) {
       case TypeInfoEnum.Hosp.toString():
-        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Hosp);
+        return TypeInfoEnum.Hosp;
       case TypeInfoEnum.Rea.toString():
-        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Rea);
+        return TypeInfoEnum.Rea;
       case TypeInfoEnum.Rad.toString():
-        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Rad);
+        return TypeInfoEnum.Rad;
       case TypeInfoEnum.Dc.toString():
-        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Dc);
+        return TypeInfoEnum.Dc;
       default:
-        return new BehaviorSubject<TypeInfoEnum>(TypeInfoEnum.Hosp);
+        return TypeInfoEnum.Default;
     }
   }
 
-  public static newColorrange(maxValue: number) {
-    const minimumColor = ColorCodeMock.green;
-    const mediumColor = ColorCodeMock.yellow;
-    const maximumColor = ColorCodeMock.red;
+  public static newChart(caption: string): ChartFusion {
+    const chart = ChartDefault;
+    chart.caption = caption;
+    return chart as ChartFusion;
+  }
+
+  public static newColorrange(maxValue: number, startlabel: string,
+                              endlabel: string): ColorrangeFusion {
+    const minimumColor = ColorCode.green;
+    const mediumColor = ColorCode.yellow;
+    const maximumColor = ColorCode.red;
 
     return {
       minvalue: 0,
-      startlabel: 'Low',
-      endlabel: 'High',
+      startlabel: startlabel,
+      endlabel: endlabel,
       code: minimumColor,
       gradient: 1,
       color: [
