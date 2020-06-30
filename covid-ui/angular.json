@@ -30,7 +30,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "@angular/common/locales/fr",
+              "@angular/common/locales/ru"
+            ]
           },
           "configurations": {
             "production": {
