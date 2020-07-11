@@ -36,12 +36,14 @@ export class CovidHelper {
   }
 
   public static parseDate(dateStr: string): Date {
-    let dateObj: Date;
+    let dateObj = new Date(Date.parse(dateStr));
+
     try {
-      dateObj = new Date(strptime(dateStr, '%d/%m/%Y'));
+      dateObj.toISOString();
     } catch (e) {
-      dateObj = new Date((Date.parse(dateStr)));
+      dateObj = strptime(dateStr, '\"%d/%m/%Y\"');
     }
+
     return dateObj;
   }
 }
