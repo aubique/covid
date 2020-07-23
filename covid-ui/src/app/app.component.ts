@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 
-import { FacadeService } from '@app/services/facade.service';
+import {FacadeService} from '@app/services/facade.service';
 
 
 @Component({
@@ -8,7 +8,7 @@ import { FacadeService } from '@app/services/facade.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy{
+export class AppComponent implements OnInit, OnDestroy {
 
   title = 'covid-ui';
 
