@@ -13,7 +13,7 @@ The datasets are retrieved from the [open platform for French public data](https
 This project is a single-page application (SPA) with interactive map.
 
 ### Front-End:
-- Angular 10
+- Angular 11
 - Bootstrap 4.5
 - FusionCharts map library
 - Font Awesome icons

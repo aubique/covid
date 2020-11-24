@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  public static readonly OPEN_COVID_GIT = 'https://raw.githubusercontent.com/opencovid19-fr/data/aa247f092c6cf27fced4b589f9b409292cac0456/data-sources/sante-publique-france/covid_hospit.csv';
+  public static readonly OLD_COVID_GIT = 'https://raw.githubusercontent.com/opencovid19-fr/data/aa247f092c6cf27fced4b589f9b409292cac0456/data-sources/sante-publique-france/covid_hospit.csv';
   public static readonly DIRECT_DATA_GOUV = 'https://www.data.gouv.fr/fr/datasets/r/63352e38-d353-4b54-bfd1-f1b3ee1cabd7';
   public static readonly ROUTE53_DATA_GOUV = 'http://data.covid19map.fr';
 

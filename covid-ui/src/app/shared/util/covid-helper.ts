@@ -8,7 +8,7 @@ export class CovidHelper {
   public static readonly LYON = {code: '69M', multiplier: 0.66};
 
   public static isGenderZero(gender: string): boolean {
-    return (gender == '0');
+    return (gender == "0");
   }
 
   public static isToday(date: string): boolean {
@@ -37,11 +37,18 @@ export class CovidHelper {
 
   public static parseDate(dateStr: string): Date {
     let dateObj = new Date(Date.parse(dateStr));
+    //console.log("Date:");
+    //console.log(dateObj);
 
     try {
       dateObj.toISOString();
+      //console.log("ISO String:");
+      //console.log(dateObj);
     } catch (e) {
-      dateObj = strptime(dateStr, '\"%d/%m/%Y\"');
+      dateObj = strptime(dateStr, '%d/%m/%Y');
+      // dateObj = strptime(dateStr, '%Y-%m-%d');
+      console.log("Custom Date:");
+      console.log(dateObj);
     }
 
     return dateObj;

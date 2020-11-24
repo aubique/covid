@@ -1,1822 +1,1840 @@
 import { FusionDto } from '@app/models/fusion-dto';
 
-export const FusionListMock = [
+export const FusionListInit = [
   {
     'hosp': {
       'id': 'FR.MT',
-      'value': 37,
+      'value': 13
     },
     'rea': {
       'id': 'FR.MT',
-      'value': 8,
+      'value': 4
     },
     'rad': {
       'id': 'FR.MT',
-      'value': 322,
+      'value': 475
     },
     'dc': {
       'id': 'FR.MT',
-      'value': 25,
-    },
+      'value': 30
+    }
   },
   {
     'hosp': {
       'id': 'FR.RN',
-      'value': 23,
+      'value': 48
     },
     'rea': {
       'id': 'FR.RN',
-      'value': 3,
+      'value': 10
     },
     'rad': {
       'id': 'FR.RN',
-      'value': 132,
+      'value': 476
     },
     'dc': {
       'id': 'FR.RN',
-      'value': 1,
-    },
+      'value': 29
+    }
   },
   {
     'hosp': {
       'id': 'FR.FG',
-      'value': 105,
+      'value': 19
     },
     'rea': {
       'id': 'FR.FG',
-      'value': 12,
+      'value': 3
     },
     'rad': {
       'id': 'FR.FG',
-      'value': 215,
+      'value': 1790
     },
     'dc': {
       'id': 'FR.FG',
-      'value': 5,
-    },
+      'value': 66
+    }
   },
   {
     'hosp': {
       'id': 'FR.MN',
-      'value': 12,
+      'value': 73
     },
     'rea': {
       'id': 'FR.MN',
-      'value': 3,
+      'value': 16
     },
     'rad': {
       'id': 'FR.MN',
-      'value': 89,
+      'value': 183
     },
     'dc': {
       'id': 'FR.MN',
-      'value': 14,
-    },
+      'value': 30
+    }
   },
   {
     'hosp': {
       'id': 'FR.GD',
-      'value': 6,
+      'value': 146
     },
     'rea': {
       'id': 'FR.GD',
-      'value': 0,
+      'value': 17
     },
     'rad': {
       'id': 'FR.GD',
-      'value': 80,
+      'value': 568
     },
     'dc': {
       'id': 'FR.GD',
-      'value': 15,
-    },
+      'value': 136
+    }
   },
   {
     'hosp': {
       'id': 'FR.VO',
-      'value': 387,
+      'value': 370
     },
     'rea': {
       'id': 'FR.VO',
-      'value': 7,
+      'value': 48
     },
     'rad': {
       'id': 'FR.VO',
-      'value': 2469,
+      'value': 3577
     },
     'dc': {
       'id': 'FR.VO',
-      'value': 698,
-    },
+      'value': 851
+    }
   },
   {
     'hosp': {
       'id': 'FR.VM',
-      'value': 666,
+      'value': 697
     },
     'rea': {
       'id': 'FR.VM',
-      'value': 23,
+      'value': 102
     },
     'rad': {
       'id': 'FR.VM',
-      'value': 3952,
+      'value': 5722
     },
     'dc': {
       'id': 'FR.VM',
-      'value': 1189,
-    },
+      'value': 1377
+    }
   },
   {
     'hosp': {
       'id': 'FR.SS',
-      'value': 756,
+      'value': 619
     },
     'rea': {
       'id': 'FR.SS',
-      'value': 66,
+      'value': 88
     },
     'rad': {
       'id': 'FR.SS',
-      'value': 3525,
+      'value': 5504
     },
     'dc': {
       'id': 'FR.SS',
-      'value': 978,
-    },
+      'value': 1177
+    }
   },
   {
     'hosp': {
       'id': 'FR.HD',
-      'value': 807,
+      'value': 677
     },
     'rea': {
       'id': 'FR.HD',
-      'value': 65,
+      'value': 146
     },
     'rad': {
       'id': 'FR.HD',
-      'value': 4188,
+      'value': 6184
     },
     'dc': {
       'id': 'FR.HD',
-      'value': 1070,
-    },
+      'value': 1235
+    }
   },
   {
     'hosp': {
       'id': 'FR.ES',
-      'value': 474,
+      'value': 480
     },
     'rea': {
       'id': 'FR.ES',
-      'value': 40,
+      'value': 81
     },
     'rad': {
       'id': 'FR.ES',
-      'value': 2194,
+      'value': 3467
     },
     'dc': {
       'id': 'FR.ES',
-      'value': 521,
-    },
+      'value': 699
+    }
   },
   {
     'hosp': {
       'id': 'FR.TB',
-      'value': 27,
+      'value': 50
     },
     'rea': {
       'id': 'FR.TB',
-      'value': 1,
+      'value': 13
     },
     'rad': {
       'id': 'FR.TB',
-      'value': 515,
+      'value': 603
     },
     'dc': {
       'id': 'FR.TB',
-      'value': 185,
-    },
+      'value': 206
+    }
   },
   {
     'hosp': {
       'id': 'FR.YO',
-      'value': 20,
+      'value': 68
     },
     'rea': {
       'id': 'FR.YO',
-      'value': 1,
+      'value': 9
     },
     'rad': {
       'id': 'FR.YO',
-      'value': 341,
+      'value': 488
     },
     'dc': {
       'id': 'FR.YO',
-      'value': 89,
-    },
+      'value': 97
+    }
   },
   {
     'hosp': {
       'id': 'FR.VG',
-      'value': 37,
+      'value': 61
     },
     'rea': {
       'id': 'FR.VG',
-      'value': 0,
+      'value': 5
     },
     'rad': {
       'id': 'FR.VG',
-      'value': 706,
+      'value': 792
     },
     'dc': {
       'id': 'FR.VG',
-      'value': 261,
-    },
+      'value': 271
+    }
   },
   {
     'hosp': {
       'id': 'FR.HV',
-      'value': 5,
+      'value': 80
     },
     'rea': {
       'id': 'FR.HV',
-      'value': 0,
+      'value': 3
     },
     'rad': {
       'id': 'FR.HV',
-      'value': 126,
+      'value': 212
     },
     'dc': {
       'id': 'FR.HV',
-      'value': 25,
-    },
+      'value': 51
+    }
   },
   {
     'hosp': {
       'id': 'FR.VN',
-      'value': 7,
+      'value': 43
     },
     'rea': {
       'id': 'FR.VN',
-      'value': 0,
+      'value': 7
     },
     'rad': {
       'id': 'FR.VN',
-      'value': 141,
+      'value': 209
     },
     'dc': {
       'id': 'FR.VN',
-      'value': 39,
-    },
+      'value': 45
+    }
   },
   {
     'hosp': {
       'id': 'FR.VD',
-      'value': 26,
+      'value': 53
     },
     'rea': {
       'id': 'FR.VD',
-      'value': 0,
+      'value': 5
     },
     'rad': {
       'id': 'FR.VD',
-      'value': 242,
+      'value': 357
     },
     'dc': {
       'id': 'FR.VD',
-      'value': 40,
-    },
+      'value': 49
+    }
   },
   {
     'hosp': {
       'id': 'FR.VC',
-      'value': 28,
+      'value': 268
     },
     'rea': {
       'id': 'FR.VC',
-      'value': 0,
+      'value': 16
     },
     'rad': {
       'id': 'FR.VC',
-      'value': 234,
+      'value': 558
     },
     'dc': {
       'id': 'FR.VC',
-      'value': 37,
-    },
+      'value': 103
+    }
   },
   {
     'hosp': {
       'id': 'FR.VR',
-      'value': 101,
+      'value': 199
     },
     'rea': {
       'id': 'FR.VR',
-      'value': 4,
+      'value': 33
     },
     'rad': {
       'id': 'FR.VR',
-      'value': 909,
+      'value': 1352
     },
     'dc': {
       'id': 'FR.VR',
-      'value': 133,
-    },
+      'value': 194
+    }
   },
   {
     'hosp': {
       'id': 'FR.TG',
-      'value': 3,
+      'value': 74
     },
     'rea': {
       'id': 'FR.TG',
-      'value': 1,
+      'value': 18
     },
     'rad': {
       'id': 'FR.TG',
-      'value': 42,
+      'value': 129
     },
     'dc': {
       'id': 'FR.TG',
-      'value': 6,
-    },
+      'value': 23
+    }
   },
   {
     'hosp': {
       'id': 'FR.TA',
-      'value': 5,
+      'value': 103
     },
     'rea': {
       'id': 'FR.TA',
-      'value': 2,
+      'value': 18
     },
     'rad': {
       'id': 'FR.TA',
-      'value': 119,
+      'value': 213
     },
     'dc': {
       'id': 'FR.TA',
-      'value': 23,
-    },
+      'value': 39
+    }
   },
   {
     'hosp': {
       'id': 'FR.SO',
-      'value': 83,
+      'value': 130
     },
     'rea': {
       'id': 'FR.SO',
-      'value': 6,
+      'value': 21
     },
     'rad': {
       'id': 'FR.SO',
-      'value': 716,
+      'value': 875
     },
     'dc': {
       'id': 'FR.SO',
-      'value': 222,
-    },
+      'value': 260
+    }
   },
   {
     'hosp': {
       'id': 'FR.DS',
-      'value': 3,
+      'value': 32
     },
     'rea': {
       'id': 'FR.DS',
-      'value': 0,
+      'value': 1
     },
     'rad': {
       'id': 'FR.DS',
-      'value': 65,
+      'value': 92
     },
     'dc': {
       'id': 'FR.DS',
-      'value': 21,
-    },
+      'value': 31
+    }
   },
   {
     'hosp': {
       'id': 'FR.YV',
-      'value': 454,
+      'value': 442
     },
     'rea': {
       'id': 'FR.YV',
-      'value': 25,
+      'value': 61
     },
     'rad': {
       'id': 'FR.YV',
-      'value': 2045,
+      'value': 3143
     },
     'dc': {
       'id': 'FR.YV',
-      'value': 511,
-    },
+      'value': 632
+    }
   },
   {
     'hosp': {
       'id': 'FR.SE',
-      'value': 293,
+      'value': 360
     },
     'rea': {
       'id': 'FR.SE',
-      'value': 37,
+      'value': 94
     },
     'rad': {
       'id': 'FR.SE',
-      'value': 2545,
+      'value': 3447
     },
     'dc': {
       'id': 'FR.SE',
-      'value': 677,
-    },
+      'value': 796
+    }
   },
   {
     'hosp': {
       'id': 'FR.SM',
-      'value': 96,
+      'value': 425
     },
     'rea': {
       'id': 'FR.SM',
-      'value': 5,
+      'value': 53
     },
     'rad': {
       'id': 'FR.SM',
-      'value': 719,
+      'value': 1275
     },
     'dc': {
       'id': 'FR.SM',
-      'value': 179,
-    },
+      'value': 267
+    }
   },
   {
     'hosp': {
       'id': 'FR.VP',
-      'value': 613,
+      'value': 1012
     },
     'rea': {
       'id': 'FR.VP',
-      'value': 78,
+      'value': 216
     },
     'rad': {
       'id': 'FR.VP',
-      'value': 5952,
+      'value': 8139
     },
     'dc': {
       'id': 'FR.VP',
-      'value': 1739,
-    },
+      'value': 2047
+    }
   },
   {
     'hosp': {
       'id': 'FR.HS',
-      'value': 95,
+      'value': 237
     },
     'rea': {
       'id': 'FR.HS',
-      'value': 3,
+      'value': 28
     },
     'rad': {
       'id': 'FR.HS',
-      'value': 823,
+      'value': 1148
     },
     'dc': {
       'id': 'FR.HS',
-      'value': 163,
-    },
+      'value': 196
+    }
   },
   {
     'hosp': {
       'id': 'FR.SV',
-      'value': 25,
+      'value': 192
     },
     'rea': {
       'id': 'FR.SV',
-      'value': 0,
+      'value': 16
     },
     'rad': {
       'id': 'FR.SV',
-      'value': 392,
+      'value': 583
     },
     'dc': {
       'id': 'FR.SV',
-      'value': 69,
-    },
+      'value': 112
+    }
   },
   {
     'hosp': {
       'id': 'FR.ST',
-      'value': 39,
+      'value': 96
     },
     'rea': {
       'id': 'FR.ST',
-      'value': 0,
+      'value': 9
     },
     'rad': {
       'id': 'FR.ST',
-      'value': 349,
+      'value': 592
     },
     'dc': {
       'id': 'FR.ST',
-      'value': 84,
-    },
+      'value': 104
+    }
   },
   {
     'hosp': {
       'id': 'FR.SL',
-      'value': 38,
+      'value': 230
     },
     'rea': {
       'id': 'FR.SL',
-      'value': 4,
+      'value': 19
     },
     'rad': {
       'id': 'FR.SL',
-      'value': 726,
+      'value': 1051
     },
     'dc': {
       'id': 'FR.SL',
-      'value': 199,
-    },
+      'value': 262
+    }
   },
   {
     'hosp': {
       'id': 'FR.HN',
-      'value': 19,
+      'value': 42
     },
     'rea': {
       'id': 'FR.HN',
-      'value': 0,
+      'value': 5
     },
     'rad': {
       'id': 'FR.HN',
-      'value': 289,
+      'value': 331
     },
     'dc': {
       'id': 'FR.HN',
-      'value': 77,
+      'value': 86
+    }
+  },
+  {
+    'hosp': {
+      'id': 'FR.ME',
+      'value': 813
     },
+    'rea': {
+      'id': 'FR.ME',
+      'value': 128
+    },
+    'rad': {
+      'id': 'FR.ME',
+      'value': 3086
+    },
+    'dc': {
+      'id': 'FR.ME',
+      'value': 591
+    }
   },
   {
     'hosp': {
       'id': 'FR.RH',
-      'value': 208,
+      'value': 406
     },
     'rea': {
       'id': 'FR.RH',
-      'value': 16,
+      'value': 64
     },
     'rad': {
       'id': 'FR.RH',
-      'value': 2899,
+      'value': 1543
     },
     'dc': {
       'id': 'FR.RH',
-      'value': 647,
-    },
+      'value': 295
+    }
   },
   {
     'hosp': {
       'id': 'FR.HR',
-      'value': 330,
+      'value': 67
     },
     'rea': {
       'id': 'FR.HR',
-      'value': 15,
+      'value': 8
     },
     'rad': {
       'id': 'FR.HR',
-      'value': 2747,
+      'value': 3299
     },
     'dc': {
       'id': 'FR.HR',
-      'value': 798,
-    },
+      'value': 851
+    }
   },
   {
     'hosp': {
       'id': 'FR.BR',
-      'value': 358,
+      'value': 184
     },
     'rea': {
       'id': 'FR.BR',
-      'value': 8,
+      'value': 24
     },
     'rad': {
       'id': 'FR.BR',
-      'value': 2430,
+      'value': 3005
     },
     'dc': {
       'id': 'FR.BR',
-      'value': 653,
-    },
+      'value': 725
+    }
   },
   {
     'hosp': {
       'id': 'FR.PO',
-      'value': 1,
+      'value': 62
     },
     'rea': {
       'id': 'FR.PO',
-      'value': 1,
+      'value': 16
     },
     'rad': {
       'id': 'FR.PO',
-      'value': 277,
+      'value': 377
     },
     'dc': {
       'id': 'FR.PO',
-      'value': 34,
-    },
+      'value': 56
+    }
   },
   {
     'hosp': {
       'id': 'FR.HP',
-      'value': 5,
+      'value': 45
     },
     'rea': {
       'id': 'FR.HP',
-      'value': 2,
+      'value': 7
     },
     'rad': {
       'id': 'FR.HP',
-      'value': 153,
+      'value': 199
     },
     'dc': {
       'id': 'FR.HP',
-      'value': 27,
-    },
+      'value': 31
+    }
   },
   {
     'hosp': {
       'id': 'FR.PA',
-      'value': 1,
+      'value': 108
     },
     'rea': {
       'id': 'FR.PA',
-      'value': 0,
+      'value': 14
     },
     'rad': {
       'id': 'FR.PA',
-      'value': 222,
+      'value': 395
     },
     'dc': {
       'id': 'FR.PA',
-      'value': 27,
-    },
+      'value': 52
+    }
   },
   {
     'hosp': {
       'id': 'FR.PD',
-      'value': 17,
+      'value': 267
     },
     'rea': {
       'id': 'FR.PD',
-      'value': 2,
+      'value': 23
     },
     'rad': {
       'id': 'FR.PD',
-      'value': 174,
+      'value': 402
     },
     'dc': {
       'id': 'FR.PD',
-      'value': 42,
-    },
+      'value': 85
+    }
   },
   {
     'hosp': {
       'id': 'FR.PC',
-      'value': 200,
+      'value': 363
     },
     'rea': {
       'id': 'FR.PC',
-      'value': 24,
+      'value': 50
     },
     'rad': {
       'id': 'FR.PC',
-      'value': 1257,
+      'value': 1949
     },
     'dc': {
       'id': 'FR.PC',
-      'value': 305,
-    },
+      'value': 396
+    }
   },
   {
     'hosp': {
       'id': 'FR.OR',
-      'value': 40,
+      'value': 45
     },
     'rea': {
       'id': 'FR.OR',
-      'value': 3,
+      'value': 2
     },
     'rad': {
       'id': 'FR.OR',
-      'value': 221,
+      'value': 305
     },
     'dc': {
       'id': 'FR.OR',
-      'value': 38,
-    },
+      'value': 54
+    }
   },
   {
     'hosp': {
       'id': 'FR.OI',
-      'value': 249,
+      'value': 179
     },
     'rea': {
       'id': 'FR.OI',
-      'value': 7,
+      'value': 19
     },
     'rad': {
       'id': 'FR.OI',
-      'value': 1056,
+      'value': 1437
     },
     'dc': {
       'id': 'FR.OI',
-      'value': 405,
-    },
+      'value': 455
+    }
   },
   {
     'hosp': {
       'id': 'FR.NO',
-      'value': 473,
+      'value': 1162
     },
     'rea': {
       'id': 'FR.NO',
-      'value': 34,
+      'value': 200
     },
     'rad': {
       'id': 'FR.NO',
-      'value': 2119,
+      'value': 3880
     },
     'dc': {
       'id': 'FR.NO',
-      'value': 611,
-    },
+      'value': 911
+    }
   },
   {
     'hosp': {
       'id': 'FR.NI',
-      'value': 11,
+      'value': 18
     },
     'rea': {
       'id': 'FR.NI',
-      'value': 1,
+      'value': 4
     },
     'rad': {
       'id': 'FR.NI',
-      'value': 86,
+      'value': 139
     },
     'dc': {
       'id': 'FR.NI',
-      'value': 27,
-    },
+      'value': 31
+    }
   },
   {
     'hosp': {
       'id': 'FR.MO',
-      'value': 297,
+      'value': 177
     },
     'rea': {
       'id': 'FR.MO',
-      'value': 26,
+      'value': 28
     },
     'rad': {
       'id': 'FR.MO',
-      'value': 2324,
+      'value': 2811
     },
     'dc': {
       'id': 'FR.MO',
-      'value': 825,
-    },
+      'value': 897
+    }
   },
   {
     'hosp': {
       'id': 'FR.MB',
-      'value': 29,
+      'value': 105
     },
     'rea': {
       'id': 'FR.MB',
-      'value': 2,
+      'value': 9
     },
     'rad': {
       'id': 'FR.MB',
-      'value': 420,
+      'value': 562
     },
     'dc': {
       'id': 'FR.MB',
-      'value': 91,
-    },
+      'value': 114
+    }
   },
   {
     'hosp': {
       'id': 'FR.MS',
-      'value': 18,
+      'value': 22
     },
     'rea': {
       'id': 'FR.MS',
-      'value': 2,
+      'value': 2
     },
     'rad': {
       'id': 'FR.MS',
-      'value': 478,
+      'value': 547
     },
     'dc': {
       'id': 'FR.MS',
-      'value': 101,
-    },
+      'value': 110
+    }
   },
   {
     'hosp': {
       'id': 'FR.MM',
-      'value': 104,
+      'value': 126
     },
     'rea': {
       'id': 'FR.MM',
-      'value': 7,
+      'value': 15
     },
     'rad': {
       'id': 'FR.MM',
-      'value': 1145,
+      'value': 1447
     },
     'dc': {
       'id': 'FR.MM',
-      'value': 354,
-    },
+      'value': 383
+    }
   },
   {
     'hosp': {
       'id': 'FR.MY',
-      'value': 8,
+      'value': 43
     },
     'rea': {
       'id': 'FR.MY',
-      'value': 0,
+      'value': 5
     },
     'rad': {
       'id': 'FR.MY',
-      'value': 175,
+      'value': 296
     },
     'dc': {
       'id': 'FR.MY',
-      'value': 44,
-    },
+      'value': 54
+    }
   },
   {
     'hosp': {
       'id': 'FR.HM',
-      'value': 29,
+      'value': 44
     },
     'rea': {
       'id': 'FR.HM',
-      'value': 1,
+      'value': 4
     },
     'rad': {
       'id': 'FR.HM',
-      'value': 240,
+      'value': 294
     },
     'dc': {
       'id': 'FR.HM',
-      'value': 86,
-    },
+      'value': 97
+    }
   },
   {
     'hosp': {
       'id': 'FR.MR',
-      'value': 93,
+      'value': 98
     },
     'rea': {
       'id': 'FR.MR',
-      'value': 5,
+      'value': 21
     },
     'rad': {
       'id': 'FR.MR',
-      'value': 979,
+      'value': 1201
     },
     'dc': {
       'id': 'FR.MR',
-      'value': 263,
-    },
+      'value': 303
+    }
   },
   {
     'hosp': {
       'id': 'FR.MH',
-      'value': 37,
+      'value': 65
     },
     'rea': {
       'id': 'FR.MH',
-      'value': 4,
+      'value': 8
     },
     'rad': {
       'id': 'FR.MH',
-      'value': 139,
+      'value': 238
     },
     'dc': {
       'id': 'FR.MH',
-      'value': 47,
-    },
+      'value': 66
+    }
   },
   {
     'hosp': {
       'id': 'FR.ML',
-      'value': 69,
+      'value': 196
     },
     'rea': {
       'id': 'FR.ML',
-      'value': 3,
+      'value': 26
     },
     'rad': {
       'id': 'FR.ML',
-      'value': 577,
+      'value': 877
     },
     'dc': {
       'id': 'FR.ML',
-      'value': 139,
-    },
+      'value': 173
+    }
   },
   {
     'hosp': {
       'id': 'FR.LZ',
-      'value': 0,
+      'value': 26
     },
     'rea': {
       'id': 'FR.LZ',
-      'value': 0,
+      'value': 1
     },
     'rad': {
       'id': 'FR.LZ',
-      'value': 24,
+      'value': 44
     },
     'dc': {
       'id': 'FR.LZ',
-      'value': 1,
-    },
+      'value': 13
+    }
   },
   {
     'hosp': {
       'id': 'FR.LG',
-      'value': 8,
+      'value': 43
     },
     'rea': {
       'id': 'FR.LG',
-      'value': 0,
+      'value': 7
     },
     'rad': {
       'id': 'FR.LG',
-      'value': 73,
+      'value': 144
     },
     'dc': {
       'id': 'FR.LG',
-      'value': 10,
-    },
+      'value': 21
+    }
   },
   {
     'hosp': {
       'id': 'FR.LO',
-      'value': 1,
+      'value': 13
     },
     'rea': {
       'id': 'FR.LO',
-      'value': 0,
+      'value': 4
     },
     'rad': {
       'id': 'FR.LO',
-      'value': 69,
+      'value': 79
     },
     'dc': {
       'id': 'FR.LO',
-      'value': 22,
-    },
+      'value': 22
+    }
   },
   {
     'hosp': {
       'id': 'FR.LT',
-      'value': 83,
+      'value': 141
     },
     'rea': {
       'id': 'FR.LT',
-      'value': 5,
+      'value': 38
     },
     'rad': {
       'id': 'FR.LT',
-      'value': 576,
+      'value': 814
     },
     'dc': {
       'id': 'FR.LT',
-      'value': 101,
-    },
+      'value': 121
+    }
   },
   {
     'hosp': {
       'id': 'FR.LA',
-      'value': 66,
+      'value': 206
     },
     'rea': {
       'id': 'FR.LA',
-      'value': 4,
+      'value': 24
     },
     'rad': {
       'id': 'FR.LA',
-      'value': 660,
+      'value': 989
     },
     'dc': {
       'id': 'FR.LA',
-      'value': 157,
-    },
+      'value': 204
+    }
   },
   {
     'hosp': {
       'id': 'FR.HL',
-      'value': 2,
+      'value': 103
     },
     'rea': {
       'id': 'FR.HL',
-      'value': 0,
+      'value': 8
     },
     'rad': {
       'id': 'FR.HL',
-      'value': 105,
+      'value': 180
     },
     'dc': {
       'id': 'FR.HL',
-      'value': 18,
-    },
+      'value': 26
+    }
   },
   {
     'hosp': {
       'id': 'FR.LR',
-      'value': 104,
+      'value': 609
     },
     'rea': {
       'id': 'FR.LR',
-      'value': 7,
+      'value': 74
     },
     'rad': {
       'id': 'FR.LR',
-      'value': 936,
+      'value': 1504
     },
     'dc': {
       'id': 'FR.LR',
-      'value': 245,
-    },
+      'value': 383
+    }
   },
   {
     'hosp': {
       'id': 'FR.LC',
-      'value': 88,
+      'value': 33
     },
     'rea': {
       'id': 'FR.LC',
-      'value': 0,
+      'value': 2
     },
     'rad': {
       'id': 'FR.LC',
-      'value': 234,
+      'value': 393
     },
     'dc': {
       'id': 'FR.LC',
-      'value': 63,
-    },
+      'value': 78
+    }
   },
   {
     'hosp': {
       'id': 'FR.LD',
-      'value': 5,
+      'value': 46
     },
     'rea': {
       'id': 'FR.LD',
-      'value': 1,
+      'value': 11
     },
     'rad': {
       'id': 'FR.LD',
-      'value': 71,
+      'value': 134
     },
     'dc': {
       'id': 'FR.LD',
-      'value': 13,
-    },
+      'value': 24
+    }
   },
   {
     'hosp': {
       'id': 'FR.JU',
-      'value': 12,
+      'value': 110
     },
     'rea': {
       'id': 'FR.JU',
-      'value': 0,
+      'value': 7
     },
     'rad': {
       'id': 'FR.JU',
-      'value': 302,
+      'value': 384
     },
     'dc': {
       'id': 'FR.JU',
-      'value': 60,
-    },
+      'value': 69
+    }
   },
   {
     'hosp': {
       'id': 'FR.IS',
-      'value': 57,
+      'value': 575
     },
     'rea': {
       'id': 'FR.IS',
-      'value': 4,
+      'value': 79
     },
     'rad': {
       'id': 'FR.IS',
-      'value': 668,
+      'value': 1351
     },
     'dc': {
       'id': 'FR.IS',
-      'value': 152,
-    },
+      'value': 249
+    }
   },
   {
     'hosp': {
       'id': 'FR.IL',
-      'value': 67,
+      'value': 67
     },
     'rea': {
       'id': 'FR.IL',
-      'value': 3,
+      'value': 13
     },
     'rad': {
       'id': 'FR.IL',
-      'value': 315,
+      'value': 514
     },
     'dc': {
       'id': 'FR.IL',
-      'value': 84,
-    },
+      'value': 112
+    }
   },
   {
     'hosp': {
       'id': 'FR.IN',
-      'value': 81,
+      'value': 30
     },
     'rea': {
       'id': 'FR.IN',
-      'value': 3,
+      'value': 4
     },
     'rad': {
       'id': 'FR.IN',
-      'value': 110,
+      'value': 220
     },
     'dc': {
       'id': 'FR.IN',
-      'value': 79,
-    },
+      'value': 82
+    }
   },
   {
     'hosp': {
       'id': 'FR.IV',
-      'value': 51,
+      'value': 148
     },
     'rea': {
       'id': 'FR.IV',
-      'value': 3,
+      'value': 24
     },
     'rad': {
       'id': 'FR.IV',
-      'value': 451,
+      'value': 706
     },
     'dc': {
       'id': 'FR.IV',
-      'value': 86,
-    },
+      'value': 117
+    }
   },
   {
     'hosp': {
       'id': 'FR.HE',
-      'value': 11,
+      'value': 314
     },
     'rea': {
       'id': 'FR.HE',
-      'value': 1,
+      'value': 74
     },
     'rad': {
       'id': 'FR.HE',
-      'value': 696,
+      'value': 1205
     },
     'dc': {
       'id': 'FR.HE',
-      'value': 121,
-    },
+      'value': 227
+    }
   },
   {
     'hosp': {
       'id': 'FR.GI',
-      'value': 71,
+      'value': 276
     },
     'rea': {
       'id': 'FR.GI',
-      'value': 10,
+      'value': 47
     },
     'rad': {
       'id': 'FR.GI',
-      'value': 911,
+      'value': 1554
     },
     'dc': {
       'id': 'FR.GI',
-      'value': 151,
-    },
+      'value': 247
+    }
   },
   {
     'hosp': {
       'id': 'FR.GE',
-      'value': 2,
+      'value': 25
     },
     'rea': {
       'id': 'FR.GE',
-      'value': 1,
+      'value': 3
     },
     'rad': {
       'id': 'FR.GE',
-      'value': 87,
+      'value': 108
     },
     'dc': {
       'id': 'FR.GE',
-      'value': 23,
-    },
+      'value': 34
+    }
   },
   {
     'hosp': {
       'id': 'FR.HG',
-      'value': 42,
+      'value': 276
     },
     'rea': {
       'id': 'FR.HG',
-      'value': 3,
+      'value': 64
     },
     'rad': {
       'id': 'FR.HG',
-      'value': 628,
+      'value': 1366
     },
     'dc': {
       'id': 'FR.HG',
-      'value': 71,
-    },
+      'value': 141
+    }
   },
   {
     'hosp': {
       'id': 'FR.GA',
-      'value': 24,
+      'value': 225
     },
     'rea': {
       'id': 'FR.GA',
-      'value': 2,
+      'value': 47
     },
     'rad': {
       'id': 'FR.GA',
-      'value': 342,
+      'value': 594
     },
     'dc': {
       'id': 'FR.GA',
-      'value': 96,
-    },
+      'value': 141
+    }
   },
   {
     'hosp': {
       'id': 'FR.HC',
-      'value': 1,
+      'value': 37
     },
     'rea': {
       'id': 'FR.HC',
-      'value': 1,
+      'value': 5
     },
     'rad': {
       'id': 'FR.HC',
-      'value': 108,
+      'value': 150
     },
     'dc': {
       'id': 'FR.HC',
-      'value': 11,
-    },
+      'value': 19
+    }
   },
   {
     'hosp': {
       'id': 'FR.CS',
-      'value': 15,
+      'value': 30
     },
     'rea': {
       'id': 'FR.CS',
-      'value': 1,
+      'value': 6
     },
     'rad': {
       'id': 'FR.CS',
-      'value': 134,
+      'value': 187
     },
     'dc': {
       'id': 'FR.CS',
-      'value': 48,
-    },
+      'value': 54
+    }
   },
   {
     'hosp': {
       'id': 'FR.FI',
-      'value': 18,
+      'value': 53
     },
     'rea': {
       'id': 'FR.FI',
-      'value': 0,
+      'value': 10
     },
     'rad': {
       'id': 'FR.FI',
-      'value': 169,
+      'value': 268
     },
     'dc': {
       'id': 'FR.FI',
-      'value': 43,
-    },
+      'value': 51
+    }
   },
   {
     'hosp': {
       'id': 'FR.EL',
-      'value': 98,
+      'value': 124
     },
     'rea': {
       'id': 'FR.EL',
-      'value': 10,
+      'value': 16
     },
     'rad': {
       'id': 'FR.EL',
-      'value': 510,
+      'value': 725
     },
     'dc': {
       'id': 'FR.EL',
-      'value': 134,
-    },
+      'value': 155
+    }
   },
   {
     'hosp': {
       'id': 'FR.EU',
-      'value': 51,
+      'value': 123
     },
     'rea': {
       'id': 'FR.EU',
-      'value': 0,
+      'value': 11
     },
     'rad': {
       'id': 'FR.EU',
-      'value': 209,
+      'value': 397
     },
     'dc': {
       'id': 'FR.EU',
-      'value': 81,
-    },
+      'value': 114
+    }
   },
   {
     'hosp': {
       'id': 'FR.DM',
-      'value': 25,
+      'value': 192
     },
     'rea': {
       'id': 'FR.DM',
-      'value': 1,
+      'value': 31
     },
     'rad': {
       'id': 'FR.DM',
-      'value': 504,
+      'value': 672
     },
     'dc': {
       'id': 'FR.DM',
-      'value': 129,
-    },
+      'value': 168
+    }
   },
   {
     'hosp': {
       'id': 'FR.DB',
-      'value': 22,
+      'value': 54
     },
     'rea': {
       'id': 'FR.DB',
-      'value': 3,
+      'value': 14
     },
     'rad': {
       'id': 'FR.DB',
-      'value': 619,
+      'value': 704
     },
     'dc': {
       'id': 'FR.DB',
-      'value': 149,
-    },
+      'value': 162
+    }
   },
   {
     'hosp': {
       'id': 'FR.DD',
-      'value': 12,
+      'value': 41
     },
     'rea': {
       'id': 'FR.DD',
-      'value': 0,
+      'value': 4
     },
     'rad': {
       'id': 'FR.DD',
-      'value': 87,
+      'value': 131
     },
     'dc': {
       'id': 'FR.DD',
-      'value': 13,
-    },
+      'value': 15
+    }
   },
   {
     'hosp': {
       'id': 'FR.CR',
-      'value': 7,
+      'value': 30
     },
     'rea': {
       'id': 'FR.CR',
-      'value': 3,
+      'value': 7
     },
     'rad': {
       'id': 'FR.CR',
-      'value': 71,
+      'value': 98
     },
     'dc': {
       'id': 'FR.CR',
-      'value': 13,
-    },
+      'value': 21
+    }
   },
   {
     'hosp': {
       'id': 'FR.CA',
-      'value': 19,
+      'value': 42
     },
     'rea': {
       'id': 'FR.CA',
-      'value': 1,
+      'value': 7
     },
     'rad': {
       'id': 'FR.CA',
-      'value': 202,
+      'value': 287
     },
     'dc': {
       'id': 'FR.CA',
-      'value': 37,
-    },
+      'value': 47
+    }
   },
   {
     'hosp': {
       'id': 'FR.CO',
-      'value': 24,
+      'value': 114
     },
     'rea': {
       'id': 'FR.CO',
-      'value': 2,
+      'value': 26
     },
     'rad': {
       'id': 'FR.CO',
-      'value': 917,
+      'value': 1085
     },
     'dc': {
       'id': 'FR.CO',
-      'value': 248,
-    },
+      'value': 277
+    }
   },
   {
     'hosp': {
       'id': 'FR.CZ',
-      'value': 0,
+      'value': 41
     },
     'rea': {
       'id': 'FR.CZ',
-      'value': 0,
+      'value': 8
     },
     'rad': {
       'id': 'FR.CZ',
-      'value': 159,
+      'value': 208
     },
     'dc': {
       'id': 'FR.CZ',
-      'value': 37,
-    },
+      'value': 49
+    }
   },
   {
     'hosp': {
       'id': 'FR.CH',
-      'value': 42,
+      'value': 87
     },
     'rea': {
       'id': 'FR.CH',
-      'value': 0,
+      'value': 6
     },
     'rad': {
       'id': 'FR.CH',
-      'value': 161,
+      'value': 264
     },
     'dc': {
       'id': 'FR.CH',
-      'value': 82,
-    },
+      'value': 109
+    }
   },
   {
     'hosp': {
       'id': 'FR.CM',
-      'value': 15,
+      'value': 77
     },
     'rea': {
       'id': 'FR.CM',
-      'value': 1,
+      'value': 8
     },
     'rad': {
       'id': 'FR.CM',
-      'value': 136,
+      'value': 203
     },
     'dc': {
       'id': 'FR.CM',
-      'value': 50,
-    },
+      'value': 63
+    }
   },
   {
     'hosp': {
       'id': 'FR.CT',
-      'value': 4,
+      'value': 10
     },
     'rea': {
       'id': 'FR.CT',
-      'value': 1,
+      'value': 3
     },
     'rad': {
       'id': 'FR.CT',
-      'value': 55,
+      'value': 83
     },
     'dc': {
       'id': 'FR.CT',
-      'value': 13,
-    },
+      'value': 19
+    }
   },
   {
     'hosp': {
       'id': 'FR.CL',
-      'value': 9,
+      'value': 52
     },
     'rea': {
       'id': 'FR.CL',
-      'value': 0,
+      'value': 6
     },
     'rad': {
       'id': 'FR.CL',
-      'value': 50,
+      'value': 90
     },
     'dc': {
       'id': 'FR.CL',
-      'value': 9,
-    },
+      'value': 24
+    }
   },
   {
     'hosp': {
       'id': 'FR.CV',
-      'value': 27,
+      'value': 141
     },
     'rea': {
       'id': 'FR.CV',
-      'value': 1,
+      'value': 32
     },
     'rad': {
       'id': 'FR.CV',
-      'value': 312,
+      'value': 503
     },
     'dc': {
       'id': 'FR.CV',
-      'value': 83,
-    },
-  },
-  {
-    'hosp': {
-      'id': 'FR.AV',
-      'value': 449,
-    },
-    'rea': {
-      'id': 'FR.AV',
-      'value': 39,
-    },
-    'rad': {
-      'id': 'FR.AV',
-      'value': 3128,
-    },
-    'dc': {
-      'id': 'FR.AV',
-      'value': 547,
-    },
+      'value': 107
+    }
   },
   {
     'hosp': {
       'id': 'FR.BD',
-      'value': 1,
+      'value': 1220
     },
     'rea': {
       'id': 'FR.BD',
-      'value': 0,
+      'value': 194
     },
     'rad': {
       'id': 'FR.BD',
-      'value': 143,
+      'value': 6462
     },
     'dc': {
       'id': 'FR.BD',
-      'value': 24,
+      'value': 879
+    }
+  },
+  {
+    'hosp': {
+      'id': 'FR.AV',
+      'value': 73
     },
+    'rea': {
+      'id': 'FR.AV',
+      'value': 6
+    },
+    'rad': {
+      'id': 'FR.AV',
+      'value': 209
+    },
+    'dc': {
+      'id': 'FR.AV',
+      'value': 38
+    }
   },
   {
     'hosp': {
       'id': 'FR.AD',
-      'value': 3,
+      'value': 48
     },
     'rea': {
       'id': 'FR.AD',
-      'value': 1,
+      'value': 3
     },
     'rad': {
       'id': 'FR.AD',
-      'value': 231,
+      'value': 292
     },
     'dc': {
       'id': 'FR.AD',
-      'value': 58,
-    },
+      'value': 70
+    }
   },
   {
     'hosp': {
       'id': 'FR.AB',
-      'value': 28,
+      'value': 74
     },
     'rea': {
       'id': 'FR.AB',
-      'value': 3,
+      'value': 6
     },
     'rad': {
       'id': 'FR.AB',
-      'value': 614,
+      'value': 713
     },
     'dc': {
       'id': 'FR.AB',
-      'value': 136,
-    },
+      'value': 142
+    }
   },
   {
     'hosp': {
       'id': 'FR.AG',
-      'value': 1,
+      'value': 19
     },
     'rea': {
       'id': 'FR.AG',
-      'value': 1,
+      'value': 5
     },
     'rad': {
       'id': 'FR.AG',
-      'value': 33,
+      'value': 59
     },
     'dc': {
       'id': 'FR.AG',
-      'value': 2,
-    },
+      'value': 7
+    }
   },
   {
     'hosp': {
       'id': 'FR.AN',
-      'value': 13,
+      'value': 28
     },
     'rea': {
       'id': 'FR.AN',
-      'value': 3,
+      'value': 7
     },
     'rad': {
       'id': 'FR.AN',
-      'value': 205,
+      'value': 266
     },
     'dc': {
       'id': 'FR.AN',
-      'value': 58,
-    },
+      'value': 69
+    }
   },
   {
     'hosp': {
       'id': 'FR.AH',
-      'value': 3,
+      'value': 118
     },
     'rea': {
       'id': 'FR.AH',
-      'value': 1,
+      'value': 9
     },
     'rad': {
       'id': 'FR.AH',
-      'value': 437,
+      'value': 520
     },
     'dc': {
       'id': 'FR.AH',
-      'value': 108,
-    },
+      'value': 136
+    }
   },
   {
     'hosp': {
       'id': 'FR.AM',
-      'value': 67,
+      'value': 247
     },
     'rea': {
       'id': 'FR.AM',
-      'value': 1,
+      'value': 44
     },
     'rad': {
       'id': 'FR.AM',
-      'value': 707,
+      'value': 1367
     },
     'dc': {
       'id': 'FR.AM',
-      'value': 187,
-    },
+      'value': 246
+    }
   },
   {
     'hosp': {
       'id': 'FR.HA',
-      'value': 9,
+      'value': 118
     },
     'rea': {
       'id': 'FR.HA',
-      'value': 0,
+      'value': 17
     },
     'rad': {
       'id': 'FR.HA',
-      'value': 127,
+      'value': 207
     },
     'dc': {
       'id': 'FR.HA',
-      'value': 18,
-    },
+      'value': 36
+    }
   },
   {
     'hosp': {
       'id': 'FR.AP',
-      'value': 3,
+      'value': 44
     },
     'rea': {
       'id': 'FR.AP',
-      'value': 0,
+      'value': 2
     },
     'rad': {
       'id': 'FR.AP',
-      'value': 127,
+      'value': 183
     },
     'dc': {
       'id': 'FR.AP',
-      'value': 13,
-    },
+      'value': 20
+    }
   },
   {
     'hosp': {
       'id': 'FR.AL',
-      'value': 10,
+      'value': 160
     },
     'rea': {
       'id': 'FR.AL',
-      'value': 1,
+      'value': 10
     },
     'rad': {
       'id': 'FR.AL',
-      'value': 194,
+      'value': 299
     },
     'dc': {
       'id': 'FR.AL',
-      'value': 39,
-    },
+      'value': 66
+    }
   },
   {
     'hosp': {
       'id': 'FR.AS',
-      'value': 113,
+      'value': 131
     },
     'rea': {
       'id': 'FR.AS',
-      'value': 8,
+      'value': 13
     },
     'rad': {
       'id': 'FR.AS',
-      'value': 1002,
+      'value': 1276
     },
     'dc': {
       'id': 'FR.AS',
-      'value': 272,
-    },
+      'value': 308
+    }
   },
   {
     'hosp': {
       'id': 'FR.AI',
-      'value': 61,
+      'value': 214
     },
     'rea': {
       'id': 'FR.AI',
-      'value': 0,
+      'value': 18
     },
     'rad': {
       'id': 'FR.AI',
-      'value': 413,
+      'value': 622
     },
     'dc': {
       'id': 'FR.AI',
-      'value': 102,
-    },
+      'value': 133
+    }
   },
 ] as Array<FusionDto>;

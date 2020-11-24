@@ -1,6 +1,6 @@
 import { CasesData } from '@app/models/cases-data';
 
-export const DatalistMock = [
+export const DatalistInit = [
   {id: '002', value: 2834},
   {id: '003', value: 182},
   {id: '004', value: 312},

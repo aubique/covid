@@ -8,7 +8,7 @@ import { DatasourceFusion } from '@app/models/fusion/datasource-fusion';
 import { DepartmentCode } from '@shared/constants/code/department.code';
 import { ChartDefault } from '@shared/constants/default/chart.default';
 import { ColorCode } from '@shared/constants/code/color.code';
-import { MaxvalueListMock } from '@shared/constants/data/maxvalue-list.mock';
+import { MaxvalueListInit } from '@shared/constants/data/maxvalue-list.init';
 
 
 export class FactoryHelper {
@@ -119,10 +119,10 @@ export class FactoryHelper {
   public static newMaxvalueMap(): Map<TypeInfoEnum, number> {
     const maxvalues = new Map<TypeInfoEnum, number>();
 
-    maxvalues.set(TypeInfoEnum.Hosp, MaxvalueListMock[TypeInfoEnum.Hosp]);
-    maxvalues.set(TypeInfoEnum.Rea, MaxvalueListMock[TypeInfoEnum.Rea]);
-    maxvalues.set(TypeInfoEnum.Rad, MaxvalueListMock[TypeInfoEnum.Rad]);
-    maxvalues.set(TypeInfoEnum.Dc, MaxvalueListMock[TypeInfoEnum.Dc]);
+    maxvalues.set(TypeInfoEnum.Hosp, MaxvalueListInit[TypeInfoEnum.Hosp]);
+    maxvalues.set(TypeInfoEnum.Rea, MaxvalueListInit[TypeInfoEnum.Rea]);
+    maxvalues.set(TypeInfoEnum.Rad, MaxvalueListInit[TypeInfoEnum.Rad]);
+    maxvalues.set(TypeInfoEnum.Dc, MaxvalueListInit[TypeInfoEnum.Dc]);
 
     return maxvalues;
   }

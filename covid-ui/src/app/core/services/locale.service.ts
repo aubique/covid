@@ -1,14 +1,14 @@
-import { formatDate } from '@angular/common';
-import { Injectable } from '@angular/core';
+import {formatDate} from '@angular/common';
+import {Injectable} from '@angular/core';
 
-import { ChartFusion } from '@app/models/fusion/chart-fusion';
-import { ColorrangeFusion } from '@app/models/fusion/colorrange-fusion';
-import { Language } from '@app/models/misc/language';
-import { StoreService } from '@app/services/store.service';
-import { TranslateService } from '@ngx-translate/core';
-import { LanguagesDefault } from '@shared/constants/default/languages.default';
-import { FactoryHelper } from '@shared/util/factory-helper';
-import { Subscription } from 'rxjs';
+import {ChartFusion} from '@app/models/fusion/chart-fusion';
+import {ColorrangeFusion} from '@app/models/fusion/colorrange-fusion';
+import {Language} from '@app/models/misc/language';
+import {StoreService} from '@app/services/store.service';
+import {TranslateService} from '@ngx-translate/core';
+import {LanguagesDefault} from '@shared/constants/default/languages.default';
+import {FactoryHelper} from '@shared/util/factory-helper';
+import {Subscription} from 'rxjs';
 
 
 @Injectable({
