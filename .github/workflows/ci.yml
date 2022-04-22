@@ -1,0 +1,123 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    branches:
+      - 'master'
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  DOCKER_BUILDKIT: 1
+  COMPOSE_DOCKER_CLI_BUILD: 1
+  MASTER_BRANCH: ${{ github.ref == format('refs/heads/{0}', 'master') }}
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+
+jobs:
+  build-and-upload-docker-image:
+    runs-on: ubuntu-latest
+    name: Build and upload multi-platform docker image
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      docker-tag: ${{ steps.meta.outputs.tags }}
+
+    steps:
+      -
+        name: Dump GitHub context
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Set NPM version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+      -
+        name: Base ref
+        run: |
+          if [ "${{ github.ref_type }}" = "tag" ]; then BASEREF="${{ github.event.base_ref }}"; BASEREF="${BASEREF#refs/heads/}"; elif [ "${{ github.ref_type }}" = "branch" ]; then BASEREF="${{ github.ref_name }}"; else BASEREF=""; fi
+          echo "BASEREF=${BASEREF}" >> $GITHUB_ENV
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: arm64,arm
+      -
+        name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+        with:
+          buildkitd-flags: --debug
+      -
+        name: Show baseref, NPM version and available plalforms
+        run: |
+          echo "BaseRef: ${BASEREF}"
+          echo "NPM version: ${{ steps.package-version.outputs.current-version }}"
+          echo "Platforms: ${{ steps.buildx.outputs.platforms }}"
+      -
+        name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      -
+        name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          flavor: latest=false
+          tags: |
+            type=raw,value=latest,enable=${{ env.MASTER_BRANCH }}
+            type=semver,pattern={{version}},value=${{ steps.package-version.outputs.current-version }}
+            type=raw,value=${{ env.BASEREF }}
+            type=sha
+      -
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          file: Dockerfile
+        # platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: |
+            type=registry,ref=${{ steps.meta.outputs.tags }}
+            type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
+          cache-to: type=inline
+
+  deploy-to-k3s-cluster:
+    needs: [ build-and-upload-docker-image ]
+    name: Deploy on K3s cluster via kubectl
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: actions/checkout@v3
+      -
+        name: Check whether the cluster is available or not
+        run: if [[ $(curl -skm 15 https://k3s.ubique.tk:6443) ]]; then exit 0; else exit 1; fi
+      -
+        name: Deploy a container to K3s
+        uses: wahyd4/kubectl-helm-action@master
+        if: ${{ success() }}
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        with:
+          args: |
+            kubectl apply -f .github/kubernetes/cd.yaml
+            kubectl describe pod covid19map-web
+
